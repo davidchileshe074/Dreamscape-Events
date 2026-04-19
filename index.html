@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dreamscape Events - Feel the Vibe, Live the Dream</title>
+    <meta name="description" content="Dreamscape Events is where families and friends come together for fun, food, and unforgettable moments in Lusaka, Zambia. A place to play, chill, eat, and celebrate.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+    
+    <!-- Navbar -->
+    <header class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon"><span class="material-symbols-outlined">eco</span></span>
+                Dreamscape<span class="highlight">Events</span>
+            </a>
+            
+            <div style="display: flex; gap: 15px; align-items: center;">
+                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
+                    <span class="material-symbols-outlined">dark_mode</span>
+                </button>
+                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
+            </div>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#packages" class="nav-link">Packages</a>
+                <a href="#gallery" class="nav-link">Gallery</a>
+                <a href="#location" class="nav-link">Location</a>
+                <a href="#contact" class="nav-link btn-small">Book Now</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Video Background -->
+    <section class="hero" id="home">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-swimming-in-a-pool-with-a-blue-bottom-1349-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="container hero-content reveal">
+            <h1 class="hero-title">Feel the Vibe,<br><span class="highlight-text">Live the Dream.</span></h1>
+            <p class="hero-subtitle">A place to play, chill, eat, and celebrate.</p>
+            <div class="hero-buttons">
+                <a href="#location" class="btn btn-primary">Visit Us Today</a>
+                <a href="#contact" class="btn btn-secondary">Book an Event</a>
+            </div>
+            <div class="hero-contact mt-3">
+                <span class="material-symbols-outlined">phone_in_talk</span> +260 979 542 298
+            </div>
+        </div>
+        <div class="hero-diagonal"></div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats section reveal fade-up" style="padding: 60px 0; background: var(--clr-deep-green); color: white;">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>500+</h3>
+                    <p>Happy Visitors Weekly</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100+</h3>
+                    <p>Events Hosted</p>
+                </div>
+                <div class="stat-box">
+                    <h3>5<span class="material-symbols-outlined" style="font-size:3rem; vertical-align: middle; color: var(--clr-golden-yellow);">star</span></h3>
+                    <p>Customer Experience</p>
+                </div>
+                <div class="stat-box">
+                    <h3>100%</h3>
+                    <p>Fun Guaranteed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About / Day at Dreamscape Section -->
+    <section class="about section" id="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text reveal fade-left">
+                    <h2 class="section-title">A Day at <span class="highlight-text">Dreamscape</span></h2>
+                    <p class="about-desc">Start your day with a relaxing walk in our beautiful outdoor environment. Let the kids enjoy the play zone, bouncing and laughing to their heart's content. Grab a refreshing drink by the pool, and wrap up with an amazing meal from our kitchen.</p>
+                    <p class="about-desc" style="font-weight: 600;">Why Choose Us?</p>
+                    <ul class="experience-list">
+                        <li><span class="material-symbols-outlined">check_circle</span> Safe & fun for kids</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Beautiful outdoor nature</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Affordable entry & packages</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Great food & refreshing drinks</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Perfect for large groups & celebrations</li>
+                    </ul>
+                </div>
+                <div class="about-image reveal fade-right">
+                    <div class="image-card-group">
+                        <img src="Assets/668914773_122127458655062541_3525115175218048860_n.jpg" alt="Dreamscape Garden" class="img-main">
+                        <img src="Assets/669849424_122127458253062541_1959290481140301703_n.jpg" alt="Enjoying Food" class="img-overlay">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services section bg-light-beige" id="services">
+        <div class="services-diagonal-top"></div>
+        <div class="container has-text-centered reveal fade-up">
+            <h2 class="section-title">Everything You <span class="highlight-text">Need</span></h2>
+            <p class="section-subtitle">Discover a wide range of facilities and activities designed to make your visit perfect.</p>
+            
+            <div class="services-grid">
+                <div class="service-card reveal fade-up" style="transition-delay: 0.1s">
+                    <div class="service-icon"><span class="material-symbols-outlined">child_care</span></div>
+                    <h3 class="service-title">Kids Play Park</h3>
+                    <p>Safe and fun environments with bouncy castles, playground equipment, popcorns, and candy floss for endless entertainment.</p>
+                </div>
+                <div class="service-card reveal fade-up" style="transition-delay: 0.2s">
+                    <div class="service-icon"><span class="material-symbols-outlined">park</span></div>
+                    <h3 class="service-title">Gardens & Spaces</h3>
+                    <p>Lush, beautifully serene gardens perfect for relaxing or setting up your next big event.</p>
+                </div>
+                <div class="service-card reveal fade-up" style="transition-delay: 0.3s">
+                    <div class="service-icon"><span class="material-symbols-outlined">restaurant</span></div>
+                    <h3 class="service-title">Restaurant & Bar</h3>
+                    <p>Delicious meals, chilled drinks from the bar, and great vibes to keep you energized all day long.</p>
+                </div>
+                <div class="service-card reveal fade-up" style="transition-delay: 0.4s">
+                    <div class="service-icon"><span class="material-symbols-outlined">pool</span></div>
+                    <h3 class="service-title">Pool Area</h3>
+                    <p>Cool off in our pristine pool, featuring a relaxing deck perfect for those hot sunny days.</p>
+                </div>
+            </div>
+        </div>
+        <div class="services-diagonal-bottom"></div>
+    </section>
+
+    <!-- Packages Section -->
+    <section class="packages section" id="packages">
+        <div class="container">
+            <div class="packages-header has-text-centered reveal fade-up">
+                <h2 class="section-title">Packages & <span class="highlight-text">Promotions</span></h2>
+                <p class="section-subtitle">General Entry Fee: <strong>K100</strong> (Adults & Kids). Upgrade your visit with our exclusive packages!</p>
+            </div>
+            
+            <div class="packages-grid">
+                <!-- Birthday Package -->
+                <div class="package-card reveal fade-up" style="transition-delay: 0.1s">
+                    <div class="package-header">
+                        <h3>Birthday Package</h3>
+                        <div class="package-price">K1,500</div>
+                    </div>
+                    <ul class="package-features">
+                        <li><span class="material-symbols-outlined">check_circle</span> Venue setup & decors</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Platter & drinks for 6</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> All access swimming</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Bouncy castle access</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 20px;">Book Now</a>
+                </div>
+                
+                <!-- Couple Valentine's Package -->
+                <div class="package-card featured reveal fade-up" style="transition-delay: 0.2s">
+                    <div class="package-badge">Valentine's Special ❤️</div>
+                    <div class="package-header">
+                        <h3>Couple's Retreat</h3>
+                        <div class="package-price">K1,000</div>
+                    </div>
+                    <ul class="package-features">
+                        <li><span class="material-symbols-outlined">check_circle</span> Full-course meal</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Red wine bottle</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Swimming</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Romantic photoshoot</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Reserve Spot</a>
+                </div>
+                
+                <!-- Group / Chill Pass -->
+                <div class="package-card reveal fade-up" style="transition-delay: 0.3s">
+                    <div class="package-header">
+                        <h3>Group Chill Pass</h3>
+                        <p class="package-sub">(4-6 People)</p>
+                        <div class="package-price">K850</div>
+                    </div>
+                    <ul class="package-features">
+                        <li><span class="material-symbols-outlined">check_circle</span> Dreamscape Platter</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> 2L Coke or Fanta</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Swimming</li>
+                        <li><span class="material-symbols-outlined">check_circle</span> Group photoshoot</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-outline" style="width: 100%; margin-top: 20px;">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Reels Section -->
+    <section class="reels section bg-light-beige reveal fade-up">
+        <div class="container">
+            <h2 class="section-title has-text-centered mb-3">Live the <span class="highlight-text">Vibe</span></h2>
+            <div class="reels-grid">
+                <div class="reel-wrapper shadow-lg rounded-xl">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-playing-with-water-in-the-pool-186-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-overlay">Pool Fun</div>
+                </div>
+                <div class="reel-wrapper shadow-lg rounded-xl">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-friends-toasting-with-beer-around-a-table-4171-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-overlay">Good Food</div>
+                </div>
+                <div class="reel-wrapper shadow-lg rounded-xl">
+                    <video autoplay muted loop playsinline>
+                        <source src="https://assets.mixkit.co/videos/preview/mixkit-happy-kids-running-in-a-park-243-large.mp4" type="video/mp4">
+                    </video>
+                    <div class="reel-overlay">Kids Area</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section (Lightbox + Categories) -->
+    <section class="gallery section" id="gallery">
+        <div class="container">
+            <div class="gallery-header reveal fade-up has-text-centered">
+                <h2 class="section-title">Visual <span class="highlight-text">Experience</span></h2>
+                <div class="gallery-filters mt-3">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="kids">Kids</button>
+                    <button class="filter-btn" data-filter="food">Food</button>
+                    <button class="filter-btn" data-filter="events">Events</button>
+                    <button class="filter-btn" data-filter="pool">Pool</button>
+                </div>
+            </div>
+            
+            <div class="gallery-masonry" id="gallery-container">
+                <div class="gallery-item reveal fade-up" data-category="kids" style="transition-delay: 0.1s">
+                    <img src="Assets/656156506_122125149963062541_1354086785535521955_n.jpg" alt="Kids Playing">
+                    <div class="gallery-overlay"><span>Kids Playing</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="events" style="transition-delay: 0.2s">
+                    <img src="Assets/656762922_122125150203062541_8575580031261551940_n.jpg" alt="Garden Setups">
+                    <div class="gallery-overlay"><span>Garden Setups</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="kids" style="transition-delay: 0.3s">
+                    <img src="Assets/667886465_122127081441062541_4094577422667160929_n.jpg" alt="Bouncy Castles">
+                    <div class="gallery-overlay"><span>Bouncy Castles</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="food" style="transition-delay: 0.4s">
+                    <img src="Assets/668205512_122127081531062541_4664016781778917573_n.jpg" alt="Food & Drinks">
+                    <div class="gallery-overlay"><span>Food & Drinks</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="pool" style="transition-delay: 0.5s">
+                    <img src="Assets/668568362_122127081321062541_245736115682372772_n.jpg" alt="Pool Fun">
+                    <div class="gallery-overlay"><span>Pool Fun</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="events" style="transition-delay: 0.6s">
+                    <img src="Assets/669425172_122127458499062541_550682186824300236_n.jpg" alt="Beautiful Spaces">
+                    <div class="gallery-overlay"><span>Beautiful Events</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox Container -->
+    <div class="lightbox" id="lightbox">
+        <span class="material-symbols-outlined lightbox-close" id="lightbox-close">close</span>
+        <img src="" alt="Fullscreen image" id="lightbox-img">
+    </div>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials section bg-light-beige reveal fade-up">
+        <div class="container">
+            <h2 class="section-title has-text-centered mb-4">What They <span class="highlight-text">Say</span></h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Best family spot in Lusaka! The gardens are beautiful and the kids had a blast."</p>
+                    <p class="testimonial-author">- Sarah P.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"My kids didn’t want to leave! The bouncy castles and candy floss made their day."</p>
+                    <p class="testimonial-author">- Chanda M.</p>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Perfect for birthdays! We booked a package here and everything was handled flawlessly."</p>
+                    <p class="testimonial-author">- Joy & James</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Embedded Map Section -->
+    <section class="location section" id="location">
+        <div class="container">
+            <div class="location-grid">
+                <div class="location-content reveal fade-left">
+                    <div class="location-icon-circle"><span class="material-symbols-outlined">location_on</span></div>
+                    <h2 class="section-title">Find <span class="highlight-text">Us</span></h2>
+                    <p class="location-desc">We are conveniently located. Come and experience the ultimate retreat.</p>
+                    
+                    <div class="address-box">
+                        <span class="material-symbols-outlined">pin_drop</span>
+                        <div>
+                            <h4>Address:</h4>
+                            <p>Plot No. L/Chibo/3169736</p>
+                            <p>6 Miles, Along 7070 Road</p>
+                            <p>Between Zambian Royal Medical University & Y-Junction</p>
+                            <p><strong>Lusaka, Zambia</strong></p>
+                        </div>
+                    </div>
+                    
+                    <div class="address-box mt-2">
+                        <span class="material-symbols-outlined">schedule</span>
+                        <div>
+                            <h4>Trading Hours</h4>
+                            <p><strong>Mon - Sun | 08:00 - 22:00</strong></p>
+                            <p>Ready to serve you and guarantee enjoyable moments.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map reveal fade-right map-container">
+                    <iframe src="https://maps.google.com/maps?q=lusaka&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA & Booking Form Section -->
+    <section class="final-cta reveal" id="contact" style="background-image: url('Assets/668205512_122127081531062541_4664016781778917573_n.jpg');">
+        <div class="final-cta-overlay"></div>
+        <div class="container final-cta-content fade-up cta-layout">
+            <div class="cta-text-side">
+                <h2 style="text-align: left;">Step out and treat yourself today</h2>
+                <p style="text-align: left;">Fresh air, calm vibes, fun for kids, and relaxation for adults.</p>
+                <div class="contact-details-row mt-4" style="justify-content: flex-start;">
+                    <a href="tel:+260979542298" class="contact-pill"><span class="material-symbols-outlined">phone</span> +260 979 542 298</a>
+                    <a href="tel:+260772338643" class="contact-pill"><span class="material-symbols-outlined">phone</span> +260 772 338 643</a>
+                </div>
+                <a href="https://wa.me/260979542298" class="btn btn-primary btn-large mt-4">Chat on WhatsApp</a>
+            </div>
+            
+            <div class="booking-form">
+                <h3 style="color: var(--clr-dark); margin-bottom: 20px; text-align: center;">Book Your Visit</h3>
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" class="form-control" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" class="form-control" placeholder="+260..." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Event Type / Package</label>
+                        <select class="form-control" required>
+                            <option>Chill Day Pass</option>
+                            <option>Birthday Package</option>
+                            <option>Valentine's Special</option>
+                            <option>School Tour</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; border-radius: var(--radius-sm);">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo footer-logo">
+                        <span class="logo-icon"><span class="material-symbols-outlined">eco</span></span>
+                        Dreamscape<span class="highlight">Events</span>
+                    </a>
+                    <p class="footer-desc">A place to play, chill, eat, and celebrate. Where families and friends gather to create unforgettable memories.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#packages">Packages</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#contact">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Our Features</h3>
+                    <ul>
+                        <li>Kids Play Park</li>
+                        <li>Restaurant & Bar</li>
+                        <li>Pool Area</li>
+                        <li>Event Hosting</li>
+                        <li>Gardens</li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><span class="material-symbols-outlined">phone</span> +260 979 542 298</li>
+                        <li><span class="material-symbols-outlined">location_on</span> Plot No. L/Chibo/3169736, Lusaka</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Dreamscape Events. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Actions -->
+    <a href="#contact" class="floating-book" aria-label="Book Now">
+        <span class="material-symbols-outlined">event_available</span> Book
+    </a>
+
+    <!-- Mobile Quick Action Bar -->
+    <div class="mobile-action-bar">
+        <div class="mobile-actions">
+            <a href="tel:+260979542298" class="mobile-action-btn">
+                <span class="material-symbols-outlined">call</span> Call
+            </a>
+            <a href="#location" class="mobile-action-btn">
+                <span class="material-symbols-outlined">directions</span> Directions
+            </a>
+            <a href="#contact" class="mobile-action-btn">
+                <span class="material-symbols-outlined">book_online</span> Book
+            </a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
