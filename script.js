@@ -92,19 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
         yearSpan.textContent = new Date().getFullYear();
     }
 
-    // 5. Dark Mode Toggle
-    const themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = themeToggle.querySelector('.material-symbols-outlined');
-            if(document.body.classList.contains('dark-mode')) {
-                icon.textContent = 'light_mode';
-            } else {
-                icon.textContent = 'dark_mode';
-            }
-        });
-    }
+    // 5. (Dark mode removed)
 
     // 6. Gallery Filtering & Lightbox
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -154,5 +142,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 lightbox.classList.remove('active');
             }
         });
+    }
+
+    // 7. Hero Image Slider
+    const slides = document.querySelectorAll('.hero-slider .slide');
+    if (slides.length > 0) {
+        let currentSlide = 0;
+        setInterval(() => {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }, 5000); // 5 seconds interval
     }
 });

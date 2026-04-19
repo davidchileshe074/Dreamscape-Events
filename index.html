@@ -21,18 +21,12 @@
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <span class="logo-icon"><span class="material-symbols-outlined">eco</span></span>
-                Dreamscape<span class="highlight">Events</span>
+                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img">
             </a>
             
-            <div style="display: flex; gap: 15px; align-items: center;">
-                <button id="themeToggle" class="theme-toggle" aria-label="Toggle Dark Mode">
-                    <span class="material-symbols-outlined">dark_mode</span>
-                </button>
-                <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
-                    <span class="material-symbols-outlined">menu</span>
-                </button>
-            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
 
             <nav class="nav-links" id="navLinks">
                 <a href="#about" class="nav-link">About</a>
@@ -45,11 +39,15 @@
         </div>
     </header>
 
-    <!-- Hero Section with Video Background -->
+    <!-- Hero Section with Image Slider -->
     <section class="hero" id="home">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-swimming-in-a-pool-with-a-blue-bottom-1349-large.mp4" type="video/mp4">
-        </video>
+        <!-- Background Slider -->
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('Assets/668914773_122127458655062541_3525115175218048860_n.jpg');"></div>
+            <div class="slide" style="background-image: url('Assets/668911959_122127081399062541_8490819301266956437_n.jpg');"></div>
+            <div class="slide" style="background-image: url('Assets/669849424_122127458253062541_1959290481140301703_n.jpg');"></div>
+            <div class="slide" style="background-image: url('Assets/667886465_122127081441062541_4094577422667160929_n.jpg');"></div>
+        </div>
         <div class="hero-overlay"></div>
         <div class="container hero-content reveal">
             <h1 class="hero-title">Feel the Vibe,<br><span class="highlight-text">Live the Dream.</span></h1>
@@ -213,21 +211,15 @@
             <h2 class="section-title has-text-centered mb-3">Live the <span class="highlight-text">Vibe</span></h2>
             <div class="reels-grid">
                 <div class="reel-wrapper shadow-lg rounded-xl">
-                    <video autoplay muted loop playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-playing-with-water-in-the-pool-186-large.mp4" type="video/mp4">
-                    </video>
+                    <img src="Assets/three.jpg" alt="Pool Fun">
                     <div class="reel-overlay">Pool Fun</div>
                 </div>
                 <div class="reel-wrapper shadow-lg rounded-xl">
-                    <video autoplay muted loop playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-friends-toasting-with-beer-around-a-table-4171-large.mp4" type="video/mp4">
-                    </video>
+                    <img src="Assets/four.jpg" alt="Good Food">
                     <div class="reel-overlay">Good Food</div>
                 </div>
                 <div class="reel-wrapper shadow-lg rounded-xl">
-                    <video autoplay muted loop playsinline>
-                        <source src="https://assets.mixkit.co/videos/preview/mixkit-happy-kids-running-in-a-park-243-large.mp4" type="video/mp4">
-                    </video>
+                    <img src="Assets/eight.jpg" alt="Kids Area">
                     <div class="reel-overlay">Kids Area</div>
                 </div>
             </div>
@@ -249,29 +241,61 @@
             </div>
             
             <div class="gallery-masonry" id="gallery-container">
-                <div class="gallery-item reveal fade-up" data-category="kids" style="transition-delay: 0.1s">
-                    <img src="Assets/656156506_122125149963062541_1354086785535521955_n.jpg" alt="Kids Playing">
-                    <div class="gallery-overlay"><span>Kids Playing</span></div>
+                <div class="gallery-item reveal fade-up" data-category="events">
+                    <img src="Assets/one.jpg" alt="Beautiful Spaces">
+                    <div class="gallery-overlay"><span>Events</span></div>
                 </div>
-                <div class="gallery-item reveal fade-up" data-category="events" style="transition-delay: 0.2s">
-                    <img src="Assets/656762922_122125150203062541_8575580031261551940_n.jpg" alt="Garden Setups">
-                    <div class="gallery-overlay"><span>Garden Setups</span></div>
+                <div class="gallery-item reveal fade-up" data-category="kids">
+                    <img src="Assets/two.jpg" alt="Kids at Play">
+                    <div class="gallery-overlay"><span>Kids Fun</span></div>
                 </div>
-                <div class="gallery-item reveal fade-up" data-category="kids" style="transition-delay: 0.3s">
-                    <img src="Assets/667886465_122127081441062541_4094577422667160929_n.jpg" alt="Bouncy Castles">
-                    <div class="gallery-overlay"><span>Bouncy Castles</span></div>
+                <div class="gallery-item reveal fade-up" data-category="pool">
+                    <img src="Assets/three.jpg" alt="Pool Area">
+                    <div class="gallery-overlay"><span>Pool Day</span></div>
                 </div>
-                <div class="gallery-item reveal fade-up" data-category="food" style="transition-delay: 0.4s">
-                    <img src="Assets/668205512_122127081531062541_4664016781778917573_n.jpg" alt="Food & Drinks">
+                <div class="gallery-item reveal fade-up" data-category="food">
+                    <img src="Assets/four.jpg" alt="Food and Drinks">
                     <div class="gallery-overlay"><span>Food & Drinks</span></div>
                 </div>
-                <div class="gallery-item reveal fade-up" data-category="pool" style="transition-delay: 0.5s">
-                    <img src="Assets/668568362_122127081321062541_245736115682372772_n.jpg" alt="Pool Fun">
-                    <div class="gallery-overlay"><span>Pool Fun</span></div>
+                <div class="gallery-item reveal fade-up" data-category="events">
+                    <img src="Assets/five.jpg" alt="Garden Setups">
+                    <div class="gallery-overlay"><span>Garden Setups</span></div>
                 </div>
-                <div class="gallery-item reveal fade-up" data-category="events" style="transition-delay: 0.6s">
-                    <img src="Assets/669425172_122127458499062541_550682186824300236_n.jpg" alt="Beautiful Spaces">
-                    <div class="gallery-overlay"><span>Beautiful Events</span></div>
+                <div class="gallery-item reveal fade-up" data-category="kids">
+                    <img src="Assets/six.jpg" alt="Kids Activities">
+                    <div class="gallery-overlay"><span>Playground</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="pool">
+                    <img src="Assets/seven.jpg" alt="Pool Fun">
+                    <div class="gallery-overlay"><span>Water Fun</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="kids">
+                    <img src="Assets/eight.jpg" alt="Kids Playing">
+                    <div class="gallery-overlay"><span>Kids Playing</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="events">
+                    <img src="Assets/nine.jpg" alt="Event Setups">
+                    <div class="gallery-overlay"><span>Moments</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="food">
+                    <img src="Assets/ten.jpg" alt="Special Treats">
+                    <div class="gallery-overlay"><span>Treats</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="pool">
+                    <img src="Assets/eleven.jpg" alt="Making a Splash">
+                    <div class="gallery-overlay"><span>Splash</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="events">
+                    <img src="Assets/twelve.jpg" alt="Beautiful Event">
+                    <div class="gallery-overlay"><span>Memories</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="kids">
+                    <img src="Assets/thirteen.jpg" alt="Family Fun">
+                    <div class="gallery-overlay"><span>Family Time</span></div>
+                </div>
+                <div class="gallery-item reveal fade-up" data-category="food">
+                    <img src="Assets/fourteen.jpg" alt="Delicious Food">
+                    <div class="gallery-overlay"><span>Delicious</span></div>
                 </div>
             </div>
         </div>
@@ -393,8 +417,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="logo footer-logo">
-                        <span class="logo-icon"><span class="material-symbols-outlined">eco</span></span>
-                        Dreamscape<span class="highlight">Events</span>
+                        <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img">
                     </a>
                     <p class="footer-desc">A place to play, chill, eat, and celebrate. Where families and friends gather to create unforgettable memories.</p>
                     <div class="social-links">
