@@ -1,5 +1,6 @@
 /**
- * Dreamscape Events - Main Script
+ * Dreamscape Events - Main Script (Performance Optimized)
+ * Uses IntersectionObserver for scroll animations instead of scroll events
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,68 +32,75 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 2. Sticky Navbar, Active Link & Scroll Progress
+    // 2. Sticky Navbar & Scroll Progress - use throttled scroll
     const navbar = document.getElementById('navbar');
-    const sections = document.querySelectorAll('section');
     const scrollProgress = document.getElementById('scrollProgress');
-    
+    let ticking = false;
+
     window.addEventListener('scroll', () => {
-        // Scroll Progress Bar
-        const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (winScroll / height) * 100;
-        if(scrollProgress) scrollProgress.style.width = scrolled + "%";
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                // Scroll Progress Bar
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                if (scrollProgress) scrollProgress.style.width = scrolled + "%";
 
-        // Sticky Navbar
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+                // Sticky Navbar
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+
+                ticking = false;
+            });
+            ticking = true;
         }
+    }, { passive: true });
 
-        // Active Link Update
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (window.scrollY >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
+    // 3. Active Link Update - use IntersectionObserver instead of scroll
+    const sections = document.querySelectorAll('section[id]');
+    const activeLinkObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+                navItems.forEach(item => {
+                    item.classList.remove('active');
+                    if (item.getAttribute('href').includes(id)) {
+                        item.classList.add('active');
+                    }
+                });
             }
         });
-
-        navItems.forEach(item => {
-            item.classList.remove('active');
-            if (item.getAttribute('href').includes(current)) {
-                item.classList.add('active');
-            }
-        });
+    }, {
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
     });
 
-    // 3. Scroll Reveal Animations & Micro-interactions
-    const revealElements = document.querySelectorAll('.reveal');
+    sections.forEach(section => activeLinkObserver.observe(section));
 
-    const revealOnScroll = () => {
-        const windowHeight = window.innerHeight;
-        const revealPoint = 100;
-
-        revealElements.forEach(element => {
-            const revealTop = element.getBoundingClientRect().top;
-            if (revealTop < windowHeight - revealPoint) {
-                element.classList.add('active');
+    // 4. Scroll Reveal - use IntersectionObserver (much more efficient)
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                // Stop observing once revealed - saves resources
+                revealObserver.unobserve(entry.target);
             }
         });
-    };
+    }, {
+        rootMargin: '0px 0px -80px 0px',
+        threshold: 0.1
+    });
 
-    revealOnScroll();
-    window.addEventListener('scroll', revealOnScroll);
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    // 4. Update Current Year in Footer
+    // 5. Update Current Year in Footer
     const yearSpan = document.getElementById('current-year');
     if (yearSpan) {
         yearSpan.textContent = new Date().getFullYear();
     }
-
-    // 5. (Dark mode removed)
 
     // 6. Gallery Filtering & Lightbox
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -153,5 +161,23 @@ document.addEventListener('DOMContentLoaded', () => {
             currentSlide = (currentSlide + 1) % slides.length;
             slides[currentSlide].classList.add('active');
         }, 5000); // 5 seconds interval
+    }
+
+    // 8. Lazy-load Google Maps iframe when it comes into view
+    const mapIframe = document.querySelector('.map-container iframe[data-src]');
+    if (mapIframe) {
+        const mapObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    mapIframe.src = mapIframe.getAttribute('data-src');
+                    mapIframe.removeAttribute('data-src');
+                    mapObserver.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '200px 0px',
+            threshold: 0
+        });
+        mapObserver.observe(mapIframe);
     }
 });

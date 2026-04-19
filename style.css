@@ -1094,9 +1094,12 @@ img {
     }
     
     .navbar { background: var(--clr-white); }
-    .logo { color: var(--clr-deep-green); }
-    .logo-icon { color: var(--clr-warm-orange); }
     .nav-toggle { color: var(--clr-dark); }
+    
+    /* Logo must show original colors on mobile since navbar is always white */
+    .logo-img {
+        filter: none;
+    }
     
     .hero-title { font-size: 2.5rem; }
     
@@ -1317,4 +1320,41 @@ img {
 .reel-overlay {
     position: absolute; bottom: 20px; left: 20px; color: white;
     font-weight: bold; font-size: 1.2rem; text-shadow: 0 2px 5px rgba(0,0,0,0.8);
+}
+
+/* ===== Performance Optimizations ===== */
+
+/* Skip rendering of offscreen sections until they scroll into view */
+.about,
+.services,
+.packages,
+.reels,
+.gallery,
+.testimonials,
+.location,
+.final-cta,
+.footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 600px;
+}
+
+/* GPU-accelerate animated elements */
+.hero-slider .slide,
+.reveal,
+.service-card,
+.package-card,
+.gallery-item img,
+.reel-wrapper img {
+    will-change: transform, opacity;
+}
+
+/* Optimize image rendering for faster paint */
+img {
+    image-rendering: auto;
+    content-visibility: auto;
+}
+
+/* Remove will-change after animation completes to free GPU memory */
+.reveal.active {
+    will-change: auto;
 }

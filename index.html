@@ -5,13 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dreamscape Events - Feel the Vibe, Live the Dream</title>
     <meta name="description" content="Dreamscape Events is where families and friends come together for fun, food, and unforgettable moments in Lusaka, Zambia. A place to play, chill, eat, and celebrate.">
-    <!-- Google Fonts -->
+    <!-- Preconnect to critical origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Critical font - load normally -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
-    <!-- FontAwesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Icon fonts - load asynchronously to avoid render-blocking -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"></noscript>
+    <!-- FontAwesome - load asynchronously -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,7 +25,7 @@
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img">
+                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" fetchpriority="high">
             </a>
             
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -105,8 +109,8 @@
                 </div>
                 <div class="about-image reveal fade-right">
                     <div class="image-card-group">
-                        <img src="Assets/668914773_122127458655062541_3525115175218048860_n.jpg" alt="Dreamscape Garden" class="img-main">
-                        <img src="Assets/669849424_122127458253062541_1959290481140301703_n.jpg" alt="Enjoying Food" class="img-overlay">
+                        <img src="Assets/668914773_122127458655062541_3525115175218048860_n.jpg" alt="Dreamscape Garden" class="img-main" loading="lazy" decoding="async">
+                        <img src="Assets/669849424_122127458253062541_1959290481140301703_n.jpg" alt="Enjoying Food" class="img-overlay" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -211,15 +215,15 @@
             <h2 class="section-title has-text-centered mb-3">Live the <span class="highlight-text">Vibe</span></h2>
             <div class="reels-grid">
                 <div class="reel-wrapper shadow-lg rounded-xl">
-                    <img src="Assets/three.jpg" alt="Pool Fun">
+                    <img src="Assets/three.jpg" alt="Pool Fun" loading="lazy" decoding="async">
                     <div class="reel-overlay">Pool Fun</div>
                 </div>
                 <div class="reel-wrapper shadow-lg rounded-xl">
-                    <img src="Assets/four.jpg" alt="Good Food">
+                    <img src="Assets/four.jpg" alt="Good Food" loading="lazy" decoding="async">
                     <div class="reel-overlay">Good Food</div>
                 </div>
                 <div class="reel-wrapper shadow-lg rounded-xl">
-                    <img src="Assets/eight.jpg" alt="Kids Area">
+                    <img src="Assets/eight.jpg" alt="Kids Area" loading="lazy" decoding="async">
                     <div class="reel-overlay">Kids Area</div>
                 </div>
             </div>
@@ -242,59 +246,59 @@
             
             <div class="gallery-masonry" id="gallery-container">
                 <div class="gallery-item reveal fade-up" data-category="events">
-                    <img src="Assets/one.jpg" alt="Beautiful Spaces">
+                    <img src="Assets/one.jpg" alt="Beautiful Spaces" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Events</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="kids">
-                    <img src="Assets/two.jpg" alt="Kids at Play">
+                    <img src="Assets/two.jpg" alt="Kids at Play" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Kids Fun</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="pool">
-                    <img src="Assets/three.jpg" alt="Pool Area">
+                    <img src="Assets/three.jpg" alt="Pool Area" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Pool Day</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="food">
-                    <img src="Assets/four.jpg" alt="Food and Drinks">
+                    <img src="Assets/four.jpg" alt="Food and Drinks" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Food & Drinks</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="events">
-                    <img src="Assets/five.jpg" alt="Garden Setups">
+                    <img src="Assets/five.jpg" alt="Garden Setups" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Garden Setups</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="kids">
-                    <img src="Assets/six.jpg" alt="Kids Activities">
+                    <img src="Assets/six.jpg" alt="Kids Activities" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Playground</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="pool">
-                    <img src="Assets/seven.jpg" alt="Pool Fun">
+                    <img src="Assets/seven.jpg" alt="Pool Fun" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Water Fun</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="kids">
-                    <img src="Assets/eight.jpg" alt="Kids Playing">
+                    <img src="Assets/eight.jpg" alt="Kids Playing" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Kids Playing</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="events">
-                    <img src="Assets/nine.jpg" alt="Event Setups">
+                    <img src="Assets/nine.jpg" alt="Event Setups" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Moments</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="food">
-                    <img src="Assets/ten.jpg" alt="Special Treats">
+                    <img src="Assets/ten.jpg" alt="Special Treats" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Treats</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="pool">
-                    <img src="Assets/eleven.jpg" alt="Making a Splash">
+                    <img src="Assets/eleven.jpg" alt="Making a Splash" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Splash</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="events">
-                    <img src="Assets/twelve.jpg" alt="Beautiful Event">
+                    <img src="Assets/twelve.jpg" alt="Beautiful Event" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Memories</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="kids">
-                    <img src="Assets/thirteen.jpg" alt="Family Fun">
+                    <img src="Assets/thirteen.jpg" alt="Family Fun" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Family Time</span></div>
                 </div>
                 <div class="gallery-item reveal fade-up" data-category="food">
-                    <img src="Assets/fourteen.jpg" alt="Delicious Food">
+                    <img src="Assets/fourteen.jpg" alt="Delicious Food" loading="lazy" decoding="async">
                     <div class="gallery-overlay"><span>Delicious</span></div>
                 </div>
             </div>
@@ -319,7 +323,7 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="testimonial-text">"My kids didn’t want to leave! The bouncy castles and candy floss made their day."</p>
+                    <p class="testimonial-text">"My kids didn't want to leave! The bouncy castles and candy floss made their day."</p>
                     <p class="testimonial-author">- Chanda M.</p>
                 </div>
                 <div class="testimonial-card">
@@ -361,7 +365,7 @@
                     </div>
                 </div>
                 <div class="location-map reveal fade-right map-container">
-                    <iframe src="https://maps.google.com/maps?q=lusaka&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe data-src="https://maps.google.com/maps?q=lusaka&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -417,7 +421,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="logo footer-logo">
-                        <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img">
+                        <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" loading="lazy" decoding="async">
                     </a>
                     <p class="footer-desc">A place to play, chill, eat, and celebrate. Where families and friends gather to create unforgettable memories.</p>
                     <div class="social-links">
@@ -481,7 +485,7 @@
         </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
+    <!-- Scripts - deferred to avoid blocking rendering -->
+    <script src="script.js" defer></script>
 </body>
 </html>
