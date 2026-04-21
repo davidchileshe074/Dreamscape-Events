@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Menu - Dreamscape Events</title>
+    <meta name="description" content="Explore our delicious kitchen menu. From local Zambian dishes to international favorites, our menu is designed to satisfy every palate.">
+    <!-- Preconnect to critical origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Critical font - load normally -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Icon fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"></noscript>
+    <!-- FontAwesome -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+    
+    <!-- Navbar -->
+    <header class="navbar scrolled" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img">
+            </a>
+            
+            <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                <span class="material-symbols-outlined" style="color: var(--clr-dark);">menu</span>
+            </button>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="booking.html" class="nav-link">Booking</a>
+                <a href="gallery.html" class="nav-link">Gallery</a>
+                <a href="vital-info.html" class="nav-link">Vital Info</a>
+                <a href="kitchen-menu.html" class="nav-link active">Kitchen Menu</a>
+                <a href="map.html" class="nav-link">Map</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Kitchen Menu Hero -->
+        <section class="section bg-light-beige" style="padding-top: 200px; padding-bottom: 200px; text-align: center; min-height: 80vh; display: flex; align-items: center;">
+            <div class="container reveal fade-up">
+                <div style="background: white; padding: 60px; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); max-width: 700px; margin: 0 auto;">
+                    <span class="material-symbols-outlined" style="font-size: 5rem; color: var(--clr-warm-orange); margin-bottom: 20px;">restaurant_menu</span>
+                    <h1 class="section-title">Kitchen <span class="highlight-text">Menu</span></h1>
+                    <p class="section-subtitle" style="margin-bottom: 30px;">We are currently refining our menu to bring you the best culinary experience. Stay tuned for a delicious variety of food and drinks!</p>
+                    <a href="index.html" class="btn btn-primary">Return to Home</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo footer-logo">
+                        <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" loading="lazy">
+                    </a>
+                    <p class="footer-desc">A place to play, chill, eat, and celebrate. Where families and friends gather to create unforgettable memories.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="booking.html">Booking</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="vital-info.html">Vital Info</a></li>
+                        <li><a href="kitchen-menu.html">Kitchen Menu</a></li>
+                        <li><a href="map.html">Map</a></li>
+                    </ul>
+                </div>
+                <div class="footer-services">
+                    <h3>Our Features</h3>
+                    <ul>
+                        <li>Kids Play Park</li>
+                        <li>Restaurant & Bar</li>
+                        <li>Pool Area</li>
+                        <li>Event Hosting</li>
+                        <li>Gardens</li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><span class="material-symbols-outlined">phone</span> +260 979 542 298</li>
+                        <li><span class="material-symbols-outlined">location_on</span> Plot No. L/Chibo/3169736, Lusaka</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="current-year"></span> Dreamscape Events. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/260979542298" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js" defer></script>
+</body>
+</html>

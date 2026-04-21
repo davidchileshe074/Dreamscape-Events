@@ -47,7 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (scrollProgress) scrollProgress.style.width = scrolled + "%";
 
                 // Sticky Navbar
-                if (window.scrollY > 50) {
+                const hasHero = document.querySelector('.hero');
+                
+                if (window.scrollY > 50 || !hasHero) {
                     navbar.classList.add('scrolled');
                 } else {
                     navbar.classList.remove('scrolled');
@@ -79,6 +81,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     sections.forEach(section => activeLinkObserver.observe(section));
+
+    // 3.1 Hardset active link based on URL (for subpages)
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    navItems.forEach(item => {
+        const itemHref = item.getAttribute('href');
+        if (itemHref === currentPath) {
+            item.classList.add('active');
+        }
+    });
 
     // 4. Scroll Reveal - use IntersectionObserver (much more efficient)
     const revealObserver = new IntersectionObserver((entries) => {
@@ -179,5 +190,134 @@ document.addEventListener('DOMContentLoaded', () => {
             threshold: 0
         });
         mapObserver.observe(mapIframe);
+    }
+    // 9. Booking Form — EmailJS + WhatsApp Submission
+    const bookingForm     = document.getElementById('bookingForm');
+    const bookingSuccess  = document.getElementById('bookingSuccess');
+    const bookingAgainBtn = document.getElementById('bookingAgainBtn');
+    const submitBtn       = document.getElementById('bookingSubmitBtn');
+
+    // ─── PASTE YOUR EMAILJS KEYS HERE ───────────────────────────────────────
+    const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';    // Account → API Keys
+    const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';    // e.g. service_abc123
+    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';   // e.g. template_xyz789
+    // ────────────────────────────────────────────────────────────────────────
+
+    const WHATSAPP_NUMBER = '260979542298';
+
+    if (bookingForm && typeof emailjs !== 'undefined') {
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            // Gather values
+            const name   = document.getElementById('bookingName').value.trim();
+            const email  = document.getElementById('bookingEmail').value.trim();
+            const phone  = document.getElementById('bookingPhone').value.trim();
+            const guests = document.getElementById('bookingGuests').value.trim();
+            const pkg    = document.getElementById('bookingPackage').value.trim();
+            const date   = document.getElementById('bookingDate').value;
+            const notes  = document.getElementById('bookingNotes').value.trim();
+
+            // Validate required fields
+            let valid = true;
+            [
+                { id: 'bookingName',    val: name },
+                { id: 'bookingEmail',   val: email },
+                { id: 'bookingPhone',   val: phone },
+                { id: 'bookingGuests',  val: guests },
+                { id: 'bookingPackage', val: pkg },
+                { id: 'bookingDate',    val: date },
+            ].forEach(({ id, val }) => {
+                const el = document.getElementById(id);
+                if (!val) {
+                    el.classList.add('input-error');
+                    valid = false;
+                } else {
+                    el.classList.remove('input-error');
+                }
+            });
+
+            if (!valid) return;
+
+            // Format date
+            const formattedDate = new Date(date + 'T00:00:00').toLocaleDateString('en-ZM', {
+                weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
+            });
+
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size:1.2rem;animation:spin 1s linear infinite;margin-right:8px;">progress_activity</span>Sending...';
+
+            // Template parameters matching your EmailJS template variables
+            const templateParams = {
+                from_name:    name,
+                from_email:   email,
+                reply_to:     email,
+                from_phone:   phone,
+                guests:       guests,
+                package:      pkg,
+                booking_date: formattedDate,
+                notes:        notes || 'None',
+            };
+
+            let emailSent = false;
+            try {
+                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
+                emailSent = true;
+            } catch (err) {
+                console.error('EmailJS error:', err);
+            }
+
+            // Always open WhatsApp (works as fallback even if email fails)
+            const waMessage =
+                `🌿 *New Booking Request — Dreamscape Events*\n\n` +
+                `👤 *Name:* ${name}\n` +
+                `📧 *Email:* ${email}\n` +
+                `📞 *Contact:* ${phone}\n` +
+                `👥 *Guests:* ${guests}\n` +
+                `🎉 *Package:* ${pkg}\n` +
+                `📅 *Date:* ${formattedDate}\n` +
+                (notes ? `📝 *Notes:* ${notes}\n` : '') +
+                `\n_Sent from Dreamscape Events website_`;
+
+            window.open(
+                `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`,
+                '_blank', 'noopener,noreferrer'
+            );
+
+            // Reset button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = '<i class="fa-brands fa-whatsapp" style="margin-right:8px;"></i>Send Booking via WhatsApp';
+
+            // Show success panel
+            bookingForm.style.display = 'none';
+            if (bookingSuccess) {
+                bookingSuccess.dataset.emailSent = emailSent;
+                bookingSuccess.querySelector('p').textContent = emailSent
+                    ? "Your request was sent via WhatsApp and email. We'll confirm your booking shortly!"
+                    : "Your request was sent via WhatsApp. We'll confirm your booking shortly.";
+                bookingSuccess.style.display = 'flex';
+                bookingSuccess.classList.add('show');
+            }
+        });
+
+        // Clear error on input
+        bookingForm.querySelectorAll('.form-control').forEach(el => {
+            el.addEventListener('input', () => el.classList.remove('input-error'));
+        });
+
+        // Reset on "Make Another Booking"
+        if (bookingAgainBtn) {
+            bookingAgainBtn.addEventListener('click', () => {
+                bookingForm.reset();
+                bookingForm.style.display = 'block';
+                if (bookingSuccess) {
+                    bookingSuccess.style.display = 'none';
+                    bookingSuccess.classList.remove('show');
+                }
+            });
+        }
     }
 });
