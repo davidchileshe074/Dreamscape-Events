@@ -17,15 +17,276 @@
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     <link rel="stylesheet" href="style.css">
+
+    <style>
+      :root {
+        --teal: #0d4a52;
+        --teal-dark: #082f35;
+        --teal-mid: #1a6470;
+        --gold: #e8a320;
+        --gold-light: #f5c255;
+        --green: #2e7d32;
+        --cream: #fdf8ee;
+        --white: #ffffff;
+        --text-light: #c8e6e9;
+      }
+
+      body.menu-page {
+        background-color: var(--teal-dark);
+        color: var(--white);
+      }
+
+      /* ─── HERO ─── */
+      .hero-menu {
+        background: linear-gradient(160deg, #082f35 0%, #0d4a52 50%, #1a6470 100%);
+        text-align: center;
+        padding: 140px 20px 50px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-menu::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at 50% 0%, rgba(232,163,32,0.15) 0%, transparent 65%);
+        pointer-events: none;
+      }
+      .hero-logo {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(2.8rem, 8vw, 5rem);
+        font-weight: 900;
+        letter-spacing: -1px;
+        line-height: 1;
+        background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeDown 0.8s ease both;
+      }
+      .hero-sub {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: clamp(1rem, 3vw, 1.4rem);
+        color: var(--text-light);
+        margin-top: 8px;
+        letter-spacing: 3px;
+        animation: fadeDown 0.8s 0.15s ease both;
+      }
+      .hero-divider {
+        width: 80px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--gold), transparent);
+        margin: 24px auto;
+        animation: fadeDown 0.8s 0.25s ease both;
+      }
+      .hero-tagline {
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: var(--text-light);
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        animation: fadeDown 0.8s 0.35s ease both;
+      }
+
+      /* ─── NAV TABS ─── */
+      .nav-wrapper {
+        position: sticky;
+        top: var(--nav-height, 80px);
+        z-index: 100;
+        background: rgba(8, 47, 53, 0.97);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(232,163,32,0.25);
+        padding: 0 16px;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .nav-wrapper::-webkit-scrollbar { display: none; }
+      .nav-tabs {
+        display: flex;
+        gap: 4px;
+        min-width: max-content;
+        padding: 10px 0;
+        margin: 0 auto;
+        justify-content: center;
+      }
+      .nav-tab {
+        padding: 8px 18px;
+        border-radius: 50px;
+        border: 1px solid transparent;
+        background: transparent;
+        color: var(--text-light);
+        font-family: 'Outfit', sans-serif;
+        font-size: 0.82rem;
+        font-weight: 500;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.25s ease;
+        white-space: nowrap;
+      }
+      .nav-tab:hover {
+        border-color: rgba(232,163,32,0.4);
+        color: var(--gold-light);
+      }
+      .nav-tab.active {
+        background: linear-gradient(135deg, var(--gold) 0%, #c8860e 100%);
+        color: var(--teal-dark);
+        font-weight: 600;
+        border-color: transparent;
+      }
+
+      /* ─── SECTIONS ─── */
+      .menu-section {
+        display: none;
+        padding: 40px 16px 60px;
+        max-width: 900px;
+        margin: 0 auto;
+      }
+      .menu-section.active { 
+        display: block !important; 
+      }
+      
+      .section-image {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-radius: 16px;
+        margin-bottom: 24px;
+        border: 1px solid rgba(232,163,32,0.2);
+        box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      }
+
+      .menu-section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: clamp(1.8rem, 5vw, 2.6rem);
+        font-weight: 700;
+        color: var(--gold);
+        margin-bottom: 8px;
+      }
+      .menu-section-subtitle {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(232,163,32,0.2);
+      }
+
+      /* ─── CATEGORY LABEL ─── */
+      .cat-label {
+        font-family: 'Playfair Display', serif;
+        font-style: italic;
+        font-size: 1.1rem;
+        color: var(--gold-light);
+        margin: 32px 0 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .cat-label::after {
+        content: '';
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(90deg, rgba(232,163,32,0.4), transparent);
+      }
+
+      /* ─── MENU ITEM ─── */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+      @media (min-width: 600px) {
+        .menu-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      }
+      
+      .menu-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.07);
+        border-radius: 12px;
+        padding: 16px 20px;
+        transition: all 0.2s ease;
+        gap: 12px;
+      }
+      .menu-item:hover {
+        background: rgba(255,255,255,0.07);
+        border-color: rgba(232,163,32,0.3);
+        transform: translateY(-2px);
+      }
+      .item-info { flex: 1; }
+      .item-name {
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--white);
+        margin-bottom: 2px;
+      }
+      .item-desc {
+        font-size: 0.78rem;
+        color: rgba(200,230,233,0.6);
+        font-weight: 300;
+        line-height: 1.4;
+      }
+      .item-price {
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+        font-size: 1rem;
+        color: var(--gold);
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* ─── PLATTER CARD ─── */
+      .platter-card {
+        background: linear-gradient(135deg, rgba(232,163,32,0.1) 0%, rgba(13,74,82,0.6) 100%);
+        border: 1px solid rgba(232,163,32,0.35);
+        border-radius: 16px;
+        padding: 24px;
+        margin-bottom: 16px;
+        transition: transform 0.2s ease;
+      }
+      .platter-card:hover { transform: translateY(-3px); }
+      .platter-name {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--gold-light);
+        margin-bottom: 10px;
+      }
+      .platter-items {
+        font-size: 0.85rem;
+        color: var(--text-light);
+        line-height: 1.7;
+        margin-bottom: 14px;
+      }
+      .platter-price {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 900;
+        color: var(--gold);
+      }
+
+      /* ─── ANIMATIONS ─── */
+      @keyframes fadeDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes fadeUp {
+        from { opacity: 0; transform: translateY(18px); }
+        to   { opacity: 1; transform: translateY(0); }
+      }
+    </style>
 </head>
-<body>
+<body class="menu-page">
     <div class="scroll-progress-bar" id="scrollProgress"></div>
     
     <!-- Navbar -->
     <header class="navbar scrolled" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img">
+                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" fetchpriority="high">
             </a>
             
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -43,19 +304,308 @@
         </div>
     </header>
 
-    <main>
-        <!-- Kitchen Menu Hero -->
-        <section class="section bg-light-beige" style="padding-top: 200px; padding-bottom: 200px; text-align: center; min-height: 80vh; display: flex; align-items: center;">
-            <div class="container reveal fade-up">
-                <div style="background: white; padding: 60px; border-radius: var(--radius-xl); box-shadow: var(--shadow-lg); max-width: 700px; margin: 0 auto;">
-                    <span class="material-symbols-outlined" style="font-size: 5rem; color: var(--clr-warm-orange); margin-bottom: 20px;">restaurant_menu</span>
-                    <h1 class="section-title">Kitchen <span class="highlight-text">Menu</span></h1>
-                    <p class="section-subtitle" style="margin-bottom: 30px;">We are currently refining our menu to bring you the best culinary experience. Stay tuned for a delicious variety of food and drinks!</p>
-                    <a href="index.html" class="btn btn-primary">Return to Home</a>
-                </div>
+    <!-- HERO -->
+    <header class="hero-menu">
+        <div class="hero-logo">DREAMSCAPE</div>
+        <div class="hero-sub">Events</div>
+        <div class="hero-divider"></div>
+        <div class="hero-tagline">Bar &amp; Kitchen Menu · Lusaka, Zambia</div>
+    </header>
+
+    <!-- NAV TABS -->
+    <nav class="nav-wrapper">
+        <div class="nav-tabs" id="navTabs">
+            <button class="nav-tab active" data-target="beer">Beer &amp; Cider</button>
+            <button class="nav-tab" data-target="spirits">Spirits</button>
+            <button class="nav-tab" data-target="wine">Wine</button>
+            <button class="nav-tab" data-target="cocktails">Cocktails</button>
+            <button class="nav-tab" data-target="mixers">Mixers</button>
+            <button class="nav-tab" data-target="appetisers">Appetisers</button>
+            <button class="nav-tab" data-target="snacks">Snacks</button>
+            <button class="nav-tab" data-target="mains">Mains</button>
+            <button class="nav-tab" data-target="platters">Platters</button>
+            <button class="nav-tab" data-target="matebeto">Matebeto</button>
+            <button class="nav-tab" data-target="kids">Kids</button>
+            <button class="nav-tab" data-target="specials">Specials</button>
+        </div>
+    </nav>
+
+    <!-- BEER SECTION -->
+    <section class="menu-section active" id="beer">
+        <div class="menu-section-title">Beer &amp; Ciders</div>
+        <div class="menu-section-subtitle">Ice-cold &amp; refreshing</div>
+        <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=1200&q=80" alt="Beer &amp; Ciders" class="section-image" loading="lazy" decoding="async">
+
+        <div class="cat-label">Beers</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Mosi</div></div><div class="item-price">K25</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Castle Lite</div></div><div class="item-price">K25</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Black Label</div></div><div class="item-price">K25</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Corona</div></div><div class="item-price">K55</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Heineken</div></div><div class="item-price">K50</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Heineken Silver</div></div><div class="item-price">K50</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Budweiser</div></div><div class="item-price">K55</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Windhoek</div></div><div class="item-price">K50</div></div>
+        </div>
+
+        <div class="cat-label">Ciders</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Hunters Gold</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Hunters Dry</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Savanna Dry</div></div><div class="item-price">K50</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Brutal Fruit</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Flying Fish</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">14:30</div></div><div class="item-price">K55</div></div>
+        </div>
+    </section>
+
+    <!-- SPIRITS SECTION -->
+    <section class="menu-section" id="spirits">
+        <div class="menu-section-title">Spirits</div>
+        <div class="menu-section-subtitle">Premium pours</div>
+        <img src="https://images.unsplash.com/photo-1597290282695-edc43d0e7129?auto=format&fit=crop&w=1200&q=80" alt="Spirits" class="section-image" loading="lazy" decoding="async">
+
+        <div class="cat-label">Whiskey</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Jameson</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Jameson BB</div></div><div class="item-price">K65</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Jameson Stout</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Jack Daniels</div></div><div class="item-price">K65</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Glenfiddich 12yrs</div></div><div class="item-price">K65</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Glenfiddich 15yrs</div></div><div class="item-price">K65</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Glenlivet Founders</div></div><div class="item-price">K65</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Johnnie Walker Black</div></div><div class="item-price">K65</div></div>
+        </div>
+
+        <div class="cat-label">Gin</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Gordon's Dry</div></div><div class="item-price">K35</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Beefeater Pink</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Beefeater Dry</div></div><div class="item-price">K45</div></div>
+        </div>
+
+        <div class="cat-label">Liqueurs</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Jägermeister</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Amarula</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Strawberry Lips</div></div><div class="item-price">K45</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Kahlúa</div></div><div class="item-price">K45</div></div>
+        </div>
+    </section>
+
+    <!-- WINE SECTION -->
+    <section class="menu-section" id="wine">
+        <div class="menu-section-title">Wine</div>
+        <div class="menu-section-subtitle">Bottles &amp; glasses</div>
+        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80" alt="Wine" class="section-image" loading="lazy" decoding="async">
+
+        <div class="cat-label">Bottle</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Four Cousins</div></div><div class="item-price">K200</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Nederburg Cab/Merlot</div></div><div class="item-price">K350</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Sunkissed White</div></div><div class="item-price">K350</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Sunkissed Red</div></div><div class="item-price">K350</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Cronier 4th Street</div></div><div class="item-price">K400</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Sarah's Creek</div></div><div class="item-price">K200</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Fat Bastard Sav Blanc</div></div><div class="item-price">K550</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Fat Bastard Red</div></div><div class="item-price">K550</div></div>
+        </div>
+
+        <div class="cat-label">Glass</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Four Cousins</div></div><div class="item-price">K50</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Cellar Cask</div></div><div class="item-price">K50</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">4th Street</div></div><div class="item-price">K50</div></div>
+        </div>
+    </section>
+
+    <!-- COCKTAILS SECTION -->
+    <section class="menu-section" id="cocktails">
+        <div class="menu-section-title">Cocktails &amp; Shooters</div>
+        <div class="menu-section-subtitle">Crafted to impress</div>
+        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" alt="Cocktails" class="section-image" loading="lazy" decoding="async">
+
+        <div class="cat-label">Cocktails</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Margarita Classic / Mint</div></div><div class="item-price">K130</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Strawberry Daiquiri</div></div><div class="item-price">K130</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Cosmopolitan</div></div><div class="item-price">K130</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Whiskey Sour</div></div><div class="item-price">K130</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Mojito</div></div><div class="item-price">K130</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Sex on the Driveway</div></div><div class="item-price">K130</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Multiple Screaming Orgasms</div></div><div class="item-price">K130</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Long Island Iced Tea</div></div><div class="item-price">K150</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Barman Speedrail</div></div><div class="item-price">K150</div></div>
+        </div>
+
+        <div class="cat-label">Shooters</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Blowjob</div></div><div class="item-price">K80</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Jagerbomb</div></div><div class="item-price">K80</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Springbok</div></div><div class="item-price">K80</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Welcome to Dreams</div></div><div class="item-price">K80</div></div>
+        </div>
+    </section>
+
+    <!-- MIXERS SECTION -->
+    <section class="menu-section" id="mixers">
+        <div class="menu-section-title">Mixers &amp; Soft Drinks</div>
+        <div class="menu-section-subtitle">The perfect accompaniment</div>
+        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=1200&q=80" alt="Mixers" class="section-image" loading="lazy" decoding="async">
+
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Red Bull</div></div><div class="item-price">K50</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Juice</div></div><div class="item-price">K35</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Lemonade</div></div><div class="item-price">K20</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Tonic Water</div></div><div class="item-price">K20</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Soda Water</div></div><div class="item-price">K20</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Pink Tonic</div></div><div class="item-price">K20</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Fanta</div></div><div class="item-price">K20</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Coke</div></div><div class="item-price">K20</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Fruiticana</div></div><div class="item-price">K20</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Water</div></div><div class="item-price">K10</div></div>
+        </div>
+    </section>
+
+    <!-- APPETISERS SECTION -->
+    <section class="menu-section" id="appetisers">
+        <div class="menu-section-title">Appetisers</div>
+        <div class="menu-section-subtitle">Start your journey</div>
+        <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=1200&q=80" alt="Appetisers" class="section-image" loading="lazy" decoding="async">
+
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Creamy Chicken Livers</div><div class="item-desc">Served with wedges</div></div><div class="item-price">K60</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Crispy Pork Belly</div><div class="item-desc">Served with wedges</div></div><div class="item-price">K100</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Spicy Gizzards</div><div class="item-desc">Served with wedges</div></div><div class="item-price">K80</div></div>
+        </div>
+    </section>
+
+    <!-- SNACKS SECTION -->
+    <section class="menu-section" id="snacks">
+        <div class="menu-section-title">Snacks</div>
+        <div class="menu-section-subtitle">Light bites &amp; finger food</div>
+        <img src="https://images.unsplash.com/photo-1566740933430-b5e70b06d2d5?auto=format&fit=crop&w=1200&q=80" alt="Snacks" class="section-image" loading="lazy" decoding="async">
+
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">4 Wings with Chips</div></div><div class="item-price">K100</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">4 Beef Samosas</div></div><div class="item-price">K60</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">4 Chicken Samosas</div></div><div class="item-price">K60</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">5 Dumplings</div></div><div class="item-price">K100</div></div>
+        </div>
+    </section>
+
+    <!-- MAINS SECTION -->
+    <section class="menu-section" id="mains">
+        <div class="menu-section-title">Mains &amp; Grills</div>
+        <div class="menu-section-subtitle">All served with chips &amp; salads</div>
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="Mains &amp; Grills" class="section-image" loading="lazy" decoding="async">
+
+        <div class="cat-label">Sandwiches &amp; Wraps</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Wrap</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K80</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Beef Wrap</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K80</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Beef Burger</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K80</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Burger</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K80</div></div>
+        </div>
+
+        <div class="cat-label">Grills</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Quarter Chicken</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K90</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Half Chicken</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K180</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Full Chicken</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K300</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Grilled Beef Fillet</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K150</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">T-Bone Steak</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K250</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Spare Ribs</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K250</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">2 Pork Chops</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K200</div></div>
+        </div>
+    </section>
+
+    <!-- PLATTERS SECTION -->
+    <section class="menu-section" id="platters">
+        <div class="menu-section-title">Platter &amp; Family Meals</div>
+        <div class="menu-section-subtitle">Share the experience</div>
+        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80" alt="Platters" class="section-image" loading="lazy" decoding="async">
+
+        <div class="platter-card">
+            <div class="platter-name">Chicken Platter</div>
+            <div class="platter-items">3 wings · chicken strips · 3 samosas · chicken wrap · ¼ chicken · chips · coleslaw salads</div>
+            <div class="platter-price">K300</div>
+        </div>
+
+        <div class="platter-card">
+            <div class="platter-name">Dreamscape Platter</div>
+            <div class="platter-items">2 pork chops · 300g spare ribs · ½ chicken · T-bone · 4 meat spring rolls · 3 wings · chips · coleslaw salads</div>
+            <div class="platter-price">K620</div>
+        </div>
+    </section>
+
+    <!-- MATEBETO SECTION -->
+    <section class="menu-section" id="matebeto">
+        <div class="menu-section-title">Matebeto</div>
+        <div class="menu-section-subtitle">Traditional Zambian meals</div>
+        <img src="Assets/Traditional Zambian meals.jpg" alt="Matebeto" class="section-image" loading="lazy" decoding="async">
+
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Pork Chops</div></div><div class="item-price">K200</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Goat Stew</div></div><div class="item-price">K160</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">T-Bone</div></div><div class="item-price">K250</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Chicken</div></div><div class="item-price">K90</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Fish (Fried, Foil or Grilled)</div></div><div class="item-price">K180</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Kapenta</div></div><div class="item-price">K50</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Caterpillars</div></div><div class="item-price">K50</div></div>
+        </div>
+
+        <div class="cat-label">Extras</div>
+        <div class="menu-grid">
+            <div class="menu-item"><div class="item-info"><div class="item-name">Plain Nshima</div></div><div class="item-price">K20</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Plain Chips</div></div><div class="item-price">K30</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Plain Sausage</div></div><div class="item-price">K25</div></div>
+            <div class="menu-item"><div class="item-info"><div class="item-name">Coleslaw Salads</div></div><div class="item-price">K25</div></div>
+        </div>
+    </section>
+
+    <!-- KIDS SECTION -->
+    <section class="menu-section" id="kids">
+        <div class="menu-section-title">Kids Menu</div>
+        <div class="menu-section-subtitle">Little ones, big smiles</div>
+        <img src="https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?auto=format&fit=crop&w=1200&q=80" alt="Kids Menu" class="section-image" loading="lazy" decoding="async">
+
+        <div class="platter-card">
+            <div class="platter-name">Kids Lunch Box</div>
+            <div class="platter-items">Chicken wrap · 2 chicken samosas · chips · small Coke / Fanta</div>
+            <div class="platter-price">K80</div>
+        </div>
+
+        <div class="platter-card">
+            <div class="platter-name">Kids Sandwich Box</div>
+            <div class="platter-items">2 beef sliders (chicken or beef) · chicken mayo sandwich · chips · small Coke / Fanta</div>
+            <div class="platter-price">K110</div>
+        </div>
+    </section>
+
+    <!-- SPECIALS SECTION -->
+    <section class="menu-section" id="specials">
+        <div class="menu-section-title">Wednesday Special</div>
+        <div class="menu-section-subtitle">Available every Wednesday</div>
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img src="Assets/Butter Chicken.jpg" alt="Butter Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Butter Chicken</div></div>
+                <div class="item-price">K150</div>
             </div>
-        </section>
-    </main>
+            <div class="menu-item">
+                <img src="Assets/Chicken Lollypops.jpg" alt="Chicken Lollypops" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Chicken Lollypops</div></div>
+                <div class="item-price">K100</div>
+            </div>
+            <div class="menu-item">
+                <img src="Assets/Foil Fish & Nshima.jpg" alt="Foil Fish & Nshima" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Foil Fish &amp; Nshima</div></div>
+                <div class="item-price">K180</div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -113,5 +663,48 @@
     </a>
 
     <script src="script.js" defer></script>
+    <script>
+      (function() {
+        function switchTab(targetId) {
+          const sections = document.querySelectorAll('.menu-section');
+          const tabs = document.querySelectorAll('.nav-tab');
+          
+          sections.forEach(s => {
+            s.classList.remove('active');
+            s.style.display = 'none';
+          });
+          
+          tabs.forEach(t => t.classList.remove('active'));
+          
+          const targetSection = document.getElementById(targetId);
+          if (targetSection) {
+            targetSection.classList.add('active');
+            targetSection.style.display = 'block';
+          }
+          
+          const targetTab = document.querySelector(`.nav-tab[data-target="${targetId}"]`);
+          if (targetTab) {
+            targetTab.classList.add('active');
+            targetTab.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+          }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+          const tabs = document.querySelectorAll('.nav-tab');
+          tabs.forEach(tab => {
+            tab.onclick = function(e) {
+              const target = this.getAttribute('data-target');
+              if (target) switchTab(target);
+            };
+          });
+          
+          // Set initial state
+          const activeTab = document.querySelector('.nav-tab.active');
+          if (activeTab) {
+            switchTab(activeTab.getAttribute('data-target'));
+          }
+        });
+      })();
+    </script>
 </body>
 </html>

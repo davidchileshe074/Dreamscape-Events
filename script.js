@@ -197,16 +197,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const bookingAgainBtn = document.getElementById('bookingAgainBtn');
     const submitBtn       = document.getElementById('bookingSubmitBtn');
 
-    // ─── PASTE YOUR EMAILJS KEYS HERE ───────────────────────────────────────
-    const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';    // Account → API Keys
-    const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';    // e.g. service_abc123
-    const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';   // e.g. template_xyz789
+    // ─── FORMSUBMIT CONFIGURATION ──────────────────────────────────────────
+    const FORMSUBMIT_EMAIL = 'dreamscapeevents79@gmail.com'; 
     // ────────────────────────────────────────────────────────────────────────
 
     const WHATSAPP_NUMBER = '260979542298';
 
-    if (bookingForm && typeof emailjs !== 'undefined') {
-        emailjs.init(EMAILJS_PUBLIC_KEY);
+    if (bookingForm) {
+
+        // Set min date to today
+        const dateInput = document.getElementById('bookingDate');
+        if (dateInput) {
+            const today = new Date().toISOString().split('T')[0];
+            dateInput.setAttribute('min', today);
+        }
 
         bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
@@ -250,36 +254,38 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<span class="material-symbols-outlined" style="font-size:1.2rem;animation:spin 1s linear infinite;margin-right:8px;">progress_activity</span>Sending...';
 
-            // Template parameters matching your EmailJS template variables
-            const templateParams = {
-                from_name:    name,
-                from_email:   email,
-                reply_to:     email,
-                from_phone:   phone,
-                guests:       guests,
-                package:      pkg,
-                booking_date: formattedDate,
-                notes:        notes || 'None',
-            };
-
             let emailSent = false;
             try {
-                await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams);
-                emailSent = true;
+                // Submit to FormSubmit via AJAX
+                const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_EMAIL}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        Name: name,
+                        Email: email,
+                        Phone: phone,
+                        Guests: guests,
+                        Package: pkg,
+                        Date: formattedDate,
+                        Notes: notes || 'None',
+                        _subject: "New Booking Request — Dreamscape Events"
+                    })
+                });
+                if (response.ok) emailSent = true;
             } catch (err) {
-                console.error('EmailJS error:', err);
+                console.error('FormSubmit error:', err);
             }
 
             // Always open WhatsApp (works as fallback even if email fails)
             const waMessage =
-                `🌿 *New Booking Request — Dreamscape Events*\n\n` +
-                `👤 *Name:* ${name}\n` +
-                `📧 *Email:* ${email}\n` +
-                `📞 *Contact:* ${phone}\n` +
-                `👥 *Guests:* ${guests}\n` +
-                `🎉 *Package:* ${pkg}\n` +
-                `📅 *Date:* ${formattedDate}\n` +
-                (notes ? `📝 *Notes:* ${notes}\n` : '') +
+                ` *New Booking Request — Dreamscape Events*\n\n` +
+                ` *Name:* ${name}\n` +
+                ` *Email:* ${email}\n` +
+                ` *Contact:* ${phone}\n` +
+                ` *Guests:* ${guests}\n` +
+                ` *Package:* ${pkg}\n` +
+                ` *Date:* ${formattedDate}\n` +
+                (notes ? ` *Notes:* ${notes}\n` : '') +
                 `\n_Sent from Dreamscape Events website_`;
 
             window.open(
