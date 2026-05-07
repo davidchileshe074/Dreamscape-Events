@@ -3,11 +3,33 @@
  * Uses IntersectionObserver for scroll animations instead of scroll events
  */
 
+(() => {
+    const hidePreloader = () => {
+        const preloader = document.getElementById('sitePreloader');
+        if (!preloader) return;
+
+        preloader.classList.add('is-hidden');
+        preloader.setAttribute('aria-hidden', 'true');
+        setTimeout(() => preloader.remove(), 520);
+    };
+
+    const finishLoading = () => {
+        window.setTimeout(hidePreloader, 160);
+    };
+
+    if (document.readyState !== 'loading') {
+        finishLoading();
+    } else {
+        document.addEventListener('DOMContentLoaded', finishLoading, { once: true });
+        window.setTimeout(hidePreloader, 1800);
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Mobile Navigation Toggle
     const navToggle = document.getElementById('navToggle');
     const navLinks = document.getElementById('navLinks');
-    const navItems = document.querySelectorAll('.nav-link');
+    const navItems = document.querySelectorAll('.nav-link, .dropdown-content a');
 
     if (navToggle) {
         navToggle.addEventListener('click', () => {
@@ -21,13 +43,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close mobile menu when clicking a link
+    // Close mobile menu when clicking a link (but not if it's a dropdown trigger)
     navItems.forEach(item => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (e) => {
+            const isDropdownParent = item.parentElement.classList.contains('dropdown');
+            const dropdownContent = item.nextElementSibling;
+            
             if (navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-                const icon = navToggle.querySelector('.material-symbols-outlined');
-                icon.textContent = 'menu';
+                if (isDropdownParent && item.getAttribute('href') === '#') {
+                    // It's a mobile dropdown trigger
+                    e.preventDefault();
+                    if (dropdownContent) {
+                        dropdownContent.classList.toggle('active');
+                        // Rotate arrow icon if it exists
+                        const icon = item.querySelector('.fa-chevron-down');
+                        if (icon) {
+                            icon.style.transform = dropdownContent.classList.contains('active') ? 'rotate(180deg)' : 'rotate(0)';
+                            icon.style.transition = 'transform 0.3s ease';
+                        }
+                    }
+                } else {
+                    // Regular link or sub-link, close the menu
+                    navLinks.classList.remove('active');
+                    const icon = navToggle.querySelector('.material-symbols-outlined');
+                    if (icon) icon.textContent = 'menu';
+                    
+                    // Reset dropdowns for next time
+                    document.querySelectorAll('.dropdown-content').forEach(dc => dc.classList.remove('active'));
+                }
             }
         });
     });
@@ -167,9 +210,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const slides = document.querySelectorAll('.hero-slider .slide');
     if (slides.length > 0) {
         let currentSlide = 0;
+        const setSlideBackground = (slide) => {
+            const bg = slide.getAttribute('data-bg');
+            if (!bg) return;
+
+            slide.style.backgroundImage = `url('${bg}')`;
+            slide.removeAttribute('data-bg');
+        };
+
+        const warmHeroSlides = () => {
+            slides.forEach((slide, index) => {
+                if (index > 0) setSlideBackground(slide);
+            });
+        };
+
+        window.setTimeout(warmHeroSlides, 1600);
+
         setInterval(() => {
             slides[currentSlide].classList.remove('active');
             currentSlide = (currentSlide + 1) % slides.length;
+            setSlideBackground(slides[currentSlide]);
             slides[currentSlide].classList.add('active');
         }, 5000); // 5 seconds interval
     }

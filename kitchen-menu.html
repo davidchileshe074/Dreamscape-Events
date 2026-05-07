@@ -38,9 +38,10 @@
 
       /* ─── HERO ─── */
       .hero-menu {
-        background: linear-gradient(160deg, #082f35 0%, #0d4a52 50%, #1a6470 100%);
-        text-align: center;
-        padding: 140px 20px 50px;
+        background:
+          radial-gradient(circle at 20% 18%, rgba(232,163,32,0.18) 0%, transparent 32%),
+          linear-gradient(145deg, #061f24 0%, var(--teal-dark) 45%, #0d4a52 100%);
+        padding: 126px 20px 58px;
         position: relative;
         overflow: hidden;
       }
@@ -48,44 +49,129 @@
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse at 50% 0%, rgba(232,163,32,0.15) 0%, transparent 65%);
+        background:
+          linear-gradient(90deg, rgba(8,47,53,0.96) 0%, rgba(8,47,53,0.72) 54%, rgba(8,47,53,0.92) 100%),
+          url('Menu/Cover.jpg') center/cover no-repeat;
+        opacity: 0.28;
+        transform: scale(1.04);
+        filter: blur(2px) saturate(0.85);
         pointer-events: none;
       }
-      .hero-logo {
-        font-family: 'Playfair Display', serif;
-        font-size: clamp(2.8rem, 8vw, 5rem);
-        font-weight: 900;
-        letter-spacing: -1px;
-        line-height: 1;
-        background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 60%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+      .hero-menu::after {
+        content: '';
+        position: absolute;
+        inset: auto 0 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(232,163,32,0.65), transparent);
+      }
+      .hero-menu-inner {
+        position: relative;
+        z-index: 1;
+        width: min(1080px, 100%);
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(260px, 420px) minmax(0, 1fr);
+        align-items: center;
+        gap: 48px;
+      }
+      .menu-cover-art {
+        margin: 0;
+        justify-self: end;
+        width: 100%;
         animation: fadeDown 0.8s ease both;
       }
-      .hero-sub {
-        font-family: 'Playfair Display', serif;
-        font-style: italic;
-        font-size: clamp(1rem, 3vw, 1.4rem);
-        color: var(--text-light);
-        margin-top: 8px;
-        letter-spacing: 3px;
-        animation: fadeDown 0.8s 0.15s ease both;
+      .menu-cover-art img {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+        border-radius: 18px;
+        border: 1px solid rgba(232,163,32,0.38);
+        box-shadow: 0 28px 70px rgba(0,0,0,0.38);
       }
-      .hero-divider {
-        width: 80px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, var(--gold), transparent);
-        margin: 24px auto;
-        animation: fadeDown 0.8s 0.25s ease both;
+      .menu-cover-copy {
+        max-width: 540px;
+        text-align: left;
       }
-      .hero-tagline {
-        font-size: 0.9rem;
-        font-weight: 300;
-        color: var(--text-light);
-        letter-spacing: 1.5px;
+      .hero-kicker {
+        color: var(--gold-light);
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 2px;
         text-transform: uppercase;
-        animation: fadeDown 0.8s 0.35s ease both;
+        margin-bottom: 14px;
+        animation: fadeDown 0.8s 0.1s ease both;
+      }
+      .hero-title {
+        color: var(--white);
+        font-size: clamp(2.6rem, 6vw, 4.8rem);
+        font-weight: 900;
+        letter-spacing: 0;
+        line-height: 0.95;
+        margin: 0 0 18px;
+        animation: fadeDown 0.8s 0.18s ease both;
+      }
+      .hero-title span {
+        color: var(--gold);
+      }
+      .hero-copy {
+        color: var(--text-light);
+        font-size: clamp(1rem, 2vw, 1.16rem);
+        line-height: 1.7;
+        margin: 0;
+        animation: fadeDown 0.8s 0.26s ease both;
+      }
+      .hero-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 26px;
+        animation: fadeDown 0.8s 0.34s ease both;
+      }
+      .hero-meta span {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 38px;
+        padding: 8px 16px;
+        border: 1px solid rgba(232,163,32,0.36);
+        border-radius: 999px;
+        color: var(--gold-light);
+        font-size: 0.82rem;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+      }
+      @media (max-width: 820px) {
+        .hero-menu {
+          padding: 108px 16px 42px;
+        }
+        .hero-menu-inner {
+          grid-template-columns: 1fr;
+          gap: 28px;
+        }
+        .menu-cover-art {
+          justify-self: center;
+          max-width: min(82vw, 360px);
+        }
+        .menu-cover-copy {
+          max-width: 620px;
+          text-align: center;
+          margin: 0 auto;
+        }
+        .hero-meta {
+          justify-content: center;
+        }
+      }
+      @media (max-width: 460px) {
+        .hero-menu {
+          padding-top: 100px;
+        }
+        .hero-title {
+          font-size: clamp(2.35rem, 14vw, 3.4rem);
+        }
+        .hero-meta span {
+          width: 100%;
+        }
       }
 
       /* ─── NAV TABS ─── */
@@ -280,13 +366,21 @@
     </style>
 </head>
 <body class="menu-page">
+    <div class="site-preloader" id="sitePreloader" role="status" aria-live="polite" aria-label="Loading Dreamscape Events">
+        <div class="preloader-shell">
+            <img decoding="async" height="256" width="256" src="Assets/logo-256.png" alt="" class="preloader-logo" aria-hidden="true">
+            <div class="preloader-progress" aria-hidden="true"></div>
+            <div class="preloader-text">Loading</div>
+        </div>
+    </div>
+
     <div class="scroll-progress-bar" id="scrollProgress"></div>
     
     <!-- Navbar -->
     <header class="navbar scrolled" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" fetchpriority="high">
+                <img decoding="async" height="256" width="256" src="Assets/logo-256.png" alt="Dreamscape Events Logo" class="logo-img" fetchpriority="high">
             </a>
             
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -298,7 +392,13 @@
                 <a href="booking.html" class="nav-link">Booking</a>
                 <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="vital-info.html" class="nav-link">Vital Info</a>
-                <a href="kitchen-menu.html" class="nav-link active">Kitchen Menu</a>
+                <div class="dropdown">
+                    <a href="#" class="nav-link active">Menus <i class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="kitchen-menu.html">Kitchen Menu</a>
+                        <a href="bar-menu.html">Bar Menu</a>
+                    </div>
+                </div>
                 <a href="map.html" class="nav-link">Map</a>
             </nav>
         </div>
@@ -306,21 +406,26 @@
 
     <!-- HERO -->
     <header class="hero-menu">
-        <div class="hero-logo">DREAMSCAPE</div>
-        <div class="hero-sub">Events</div>
-        <div class="hero-divider"></div>
-        <div class="hero-tagline">Bar &amp; Kitchen Menu · Lusaka, Zambia</div>
+        <div class="hero-menu-inner">
+            <figure class="menu-cover-art">
+                <img src="Menu/Cover.jpg" alt="Dreamscape Events bar and kitchen menu cover" fetchpriority="high" decoding="async">
+            </figure>
+            <div class="menu-cover-copy">
+                <div class="hero-kicker">Dreamscape Events</div>
+                <h1 class="hero-title">Kitchen <span>Menu</span></h1>
+                <p class="hero-copy">Freshly prepared plates, snacks, platters and local favourites for your visit.</p>
+                <div class="hero-meta" aria-label="Menu details">
+                    <span>Bar &amp; Kitchen</span>
+                    <span>Lusaka, Zambia</span>
+                </div>
+            </div>
+        </div>
     </header>
 
     <!-- NAV TABS -->
     <nav class="nav-wrapper">
         <div class="nav-tabs" id="navTabs">
-            <button class="nav-tab active" data-target="beer">Beer &amp; Cider</button>
-            <button class="nav-tab" data-target="spirits">Spirits</button>
-            <button class="nav-tab" data-target="wine">Wine</button>
-            <button class="nav-tab" data-target="cocktails">Cocktails</button>
-            <button class="nav-tab" data-target="mixers">Mixers</button>
-            <button class="nav-tab" data-target="appetisers">Appetisers</button>
+            <button class="nav-tab active" data-target="appetisers">Appetisers</button>
             <button class="nav-tab" data-target="snacks">Snacks</button>
             <button class="nav-tab" data-target="mains">Mains</button>
             <button class="nav-tab" data-target="platters">Platters</button>
@@ -330,153 +435,25 @@
         </div>
     </nav>
 
-    <!-- BEER SECTION -->
-    <section class="menu-section active" id="beer">
-        <div class="menu-section-title">Beer &amp; Ciders</div>
-        <div class="menu-section-subtitle">Ice-cold &amp; refreshing</div>
-        <img src="https://images.unsplash.com/photo-1535958636474-b021ee887b13?auto=format&fit=crop&w=1200&q=80" alt="Beer &amp; Ciders" class="section-image" loading="lazy" decoding="async">
-
-        <div class="cat-label">Beers</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Mosi</div></div><div class="item-price">K25</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Castle Lite</div></div><div class="item-price">K25</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Black Label</div></div><div class="item-price">K25</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Corona</div></div><div class="item-price">K55</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Heineken</div></div><div class="item-price">K50</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Heineken Silver</div></div><div class="item-price">K50</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Budweiser</div></div><div class="item-price">K55</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Windhoek</div></div><div class="item-price">K50</div></div>
-        </div>
-
-        <div class="cat-label">Ciders</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Hunters Gold</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Hunters Dry</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Savanna Dry</div></div><div class="item-price">K50</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Brutal Fruit</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Flying Fish</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">14:30</div></div><div class="item-price">K55</div></div>
-        </div>
-    </section>
-
-    <!-- SPIRITS SECTION -->
-    <section class="menu-section" id="spirits">
-        <div class="menu-section-title">Spirits</div>
-        <div class="menu-section-subtitle">Premium pours</div>
-        <img src="https://images.unsplash.com/photo-1597290282695-edc43d0e7129?auto=format&fit=crop&w=1200&q=80" alt="Spirits" class="section-image" loading="lazy" decoding="async">
-
-        <div class="cat-label">Whiskey</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Jameson</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Jameson BB</div></div><div class="item-price">K65</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Jameson Stout</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Jack Daniels</div></div><div class="item-price">K65</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Glenfiddich 12yrs</div></div><div class="item-price">K65</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Glenfiddich 15yrs</div></div><div class="item-price">K65</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Glenlivet Founders</div></div><div class="item-price">K65</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Johnnie Walker Black</div></div><div class="item-price">K65</div></div>
-        </div>
-
-        <div class="cat-label">Gin</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Gordon's Dry</div></div><div class="item-price">K35</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Beefeater Pink</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Beefeater Dry</div></div><div class="item-price">K45</div></div>
-        </div>
-
-        <div class="cat-label">Liqueurs</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Jägermeister</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Amarula</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Strawberry Lips</div></div><div class="item-price">K45</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Kahlúa</div></div><div class="item-price">K45</div></div>
-        </div>
-    </section>
-
-    <!-- WINE SECTION -->
-    <section class="menu-section" id="wine">
-        <div class="menu-section-title">Wine</div>
-        <div class="menu-section-subtitle">Bottles &amp; glasses</div>
-        <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=1200&q=80" alt="Wine" class="section-image" loading="lazy" decoding="async">
-
-        <div class="cat-label">Bottle</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Four Cousins</div></div><div class="item-price">K200</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Nederburg Cab/Merlot</div></div><div class="item-price">K350</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Sunkissed White</div></div><div class="item-price">K350</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Sunkissed Red</div></div><div class="item-price">K350</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Cronier 4th Street</div></div><div class="item-price">K400</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Sarah's Creek</div></div><div class="item-price">K200</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Fat Bastard Sav Blanc</div></div><div class="item-price">K550</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Fat Bastard Red</div></div><div class="item-price">K550</div></div>
-        </div>
-
-        <div class="cat-label">Glass</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Four Cousins</div></div><div class="item-price">K50</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Cellar Cask</div></div><div class="item-price">K50</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">4th Street</div></div><div class="item-price">K50</div></div>
-        </div>
-    </section>
-
-    <!-- COCKTAILS SECTION -->
-    <section class="menu-section" id="cocktails">
-        <div class="menu-section-title">Cocktails &amp; Shooters</div>
-        <div class="menu-section-subtitle">Crafted to impress</div>
-        <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?auto=format&fit=crop&w=1200&q=80" alt="Cocktails" class="section-image" loading="lazy" decoding="async">
-
-        <div class="cat-label">Cocktails</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Margarita Classic / Mint</div></div><div class="item-price">K130</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Strawberry Daiquiri</div></div><div class="item-price">K130</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Cosmopolitan</div></div><div class="item-price">K130</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Whiskey Sour</div></div><div class="item-price">K130</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Mojito</div></div><div class="item-price">K130</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Sex on the Driveway</div></div><div class="item-price">K130</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Multiple Screaming Orgasms</div></div><div class="item-price">K130</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Long Island Iced Tea</div></div><div class="item-price">K150</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Barman Speedrail</div></div><div class="item-price">K150</div></div>
-        </div>
-
-        <div class="cat-label">Shooters</div>
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Blowjob</div></div><div class="item-price">K80</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Jagerbomb</div></div><div class="item-price">K80</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Springbok</div></div><div class="item-price">K80</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Welcome to Dreams</div></div><div class="item-price">K80</div></div>
-        </div>
-    </section>
-
-    <!-- MIXERS SECTION -->
-    <section class="menu-section" id="mixers">
-        <div class="menu-section-title">Mixers &amp; Soft Drinks</div>
-        <div class="menu-section-subtitle">The perfect accompaniment</div>
-        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=1200&q=80" alt="Mixers" class="section-image" loading="lazy" decoding="async">
-
-        <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Red Bull</div></div><div class="item-price">K50</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Juice</div></div><div class="item-price">K35</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Lemonade</div></div><div class="item-price">K20</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Tonic Water</div></div><div class="item-price">K20</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Soda Water</div></div><div class="item-price">K20</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Pink Tonic</div></div><div class="item-price">K20</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Fanta</div></div><div class="item-price">K20</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Coke</div></div><div class="item-price">K20</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Fruiticana</div></div><div class="item-price">K20</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Water</div></div><div class="item-price">K10</div></div>
-        </div>
-    </section>
 
     <!-- APPETISERS SECTION -->
-    <section class="menu-section" id="appetisers">
+    <section class="menu-section active" id="appetisers">
         <div class="menu-section-title">Appetisers</div>
         <div class="menu-section-subtitle">Start your journey</div>
         <img src="https://images.unsplash.com/photo-1541529086526-db283c563270?auto=format&fit=crop&w=1200&q=80" alt="Appetisers" class="section-image" loading="lazy" decoding="async">
 
         <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Creamy Chicken Livers</div><div class="item-desc">Served with wedges</div></div><div class="item-price">K60</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Crispy Pork Belly</div><div class="item-desc">Served with wedges</div></div><div class="item-price">K100</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Spicy Gizzards</div><div class="item-desc">Served with wedges</div></div><div class="item-price">K80</div></div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Assets/thumbs/Creamy Chicken Livers.jpg" alt="Creamy Chicken Livers" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Creamy Chicken Livers</div><div class="item-desc">Served with wedges</div></div>
+                <div class="item-price">K60</div>
+            </div>
+          
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Assets/thumbs/Spicy Gizzards.jpg" alt="Spicy Gizzards" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Spicy Gizzards</div><div class="item-desc">Served with wedges</div></div>
+                <div class="item-price">K80</div>
+            </div>
         </div>
     </section>
 
@@ -487,10 +464,26 @@
         <img src="https://images.unsplash.com/photo-1566740933430-b5e70b06d2d5?auto=format&fit=crop&w=1200&q=80" alt="Snacks" class="section-image" loading="lazy" decoding="async">
 
         <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">4 Wings with Chips</div></div><div class="item-price">K100</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">4 Beef Samosas</div></div><div class="item-price">K60</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">4 Chicken Samosas</div></div><div class="item-price">K60</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">5 Dumplings</div></div><div class="item-price">K100</div></div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/4 pieces of wings with Chips.jpg" alt="4 Wings with Chips" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">4 Wings with Chips</div></div>
+                <div class="item-price">K100</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/4 Pieces of samosas.jpg" alt="4 Beef Samosas" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">4 Beef Samosas</div></div>
+                <div class="item-price">K60</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/4 Pieces of chicken Samosas.jpg" alt="4 Chicken Samosas" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">4 Chicken Samosas</div></div>
+                <div class="item-price">K60</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/5 Pieces Dumplings.jpg" alt="5 Dumplings" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">5 Dumplings</div></div>
+                <div class="item-price">K100</div>
+            </div>
         </div>
     </section>
 
@@ -502,21 +495,65 @@
 
         <div class="cat-label">Sandwiches &amp; Wraps</div>
         <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Wrap</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K80</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Beef Wrap</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K80</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Beef Burger</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K80</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Chicken Burger</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K80</div></div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken Wrap With Chips and salads.jpg" alt="Chicken Wrap" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Chicken Wrap</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K80</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Beef Wrap With Chips and salads.jpg" alt="Beef Wrap" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Beef Wrap</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K80</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Beef Burger With Chips and salads.jpg" alt="Beef Burger" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Beef Burger</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K80</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken Burger With chips and salads.jpg" alt="Chicken Burger" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Chicken Burger</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K80</div>
+            </div>
         </div>
 
         <div class="cat-label">Grills</div>
         <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Quarter Chicken</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K90</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Half Chicken</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K180</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Full Chicken</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K300</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Grilled Beef Fillet</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K150</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">T-Bone Steak</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K250</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Spare Ribs</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K250</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">2 Pork Chops</div><div class="item-desc">With chips &amp; salads</div></div><div class="item-price">K200</div></div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Quarter Chicken With chips and salads.jpg" alt="Quarter Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Quarter Chicken</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K90</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Half Chicken With chips and salads.jpg" alt="Half Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Half Chicken</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K180</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Full Chicken with chips and salads.jpg" alt="Full Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Full Chicken</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K300</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Grilled Beef Filled With Chips and salads.jpg" alt="Grilled Beef Fillet" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Grilled Beef Fillet</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K150</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/T-bone with Chips and salads.jpg" alt="T-Bone Steak" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">T-Bone Steak</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K250</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Spare Ribs with Chips and salads.jpg" alt="Spare Ribs" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Spare Ribs</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K250</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/2 pork chops with Chips and salads (2).jpg" alt="2 Pork Chops" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">2 Pork Chops</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K200</div>
+            </div>
         </div>
     </section>
 
@@ -526,16 +563,24 @@
         <div class="menu-section-subtitle">Share the experience</div>
         <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80" alt="Platters" class="section-image" loading="lazy" decoding="async">
 
-        <div class="platter-card">
-            <div class="platter-name">Chicken Platter</div>
-            <div class="platter-items">3 wings · chicken strips · 3 samosas · chicken wrap · ¼ chicken · chips · coleslaw salads</div>
-            <div class="platter-price">K300</div>
-        </div>
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/3 wings · chicken strips · 3 samosas · chicken wrap · ¼ chicken · chips · coleslaw salads.jpg" alt="Chicken Platter" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info">
+                    <div class="item-name">Chicken Platter</div>
+                    <div class="item-desc">3 wings · chicken strips · 3 samosas · chicken wrap · ¼ chicken · chips · coleslaw salads</div>
+                </div>
+                <div class="item-price">K300</div>
+            </div>
 
-        <div class="platter-card">
-            <div class="platter-name">Dreamscape Platter</div>
-            <div class="platter-items">2 pork chops · 300g spare ribs · ½ chicken · T-bone · 4 meat spring rolls · 3 wings · chips · coleslaw salads</div>
-            <div class="platter-price">K620</div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/2 pork chops · 300g spare ribs · ½ chicken · T-bone · 4 meat spring rolls · 3 wings · chips · coleslaw salads.jpg" alt="Dreamscape Platter" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info">
+                    <div class="item-name">Dreamscape Platter</div>
+                    <div class="item-desc">2 pork chops · 300g spare ribs · ½ chicken · T-bone · 4 meat spring rolls · 3 wings · chips · coleslaw salads</div>
+                </div>
+                <div class="item-price">K620</div>
+            </div>
         </div>
     </section>
 
@@ -546,21 +591,65 @@
         <img src="Assets/Traditional Zambian meals.jpg" alt="Matebeto" class="section-image" loading="lazy" decoding="async">
 
         <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Pork Chops</div></div><div class="item-price">K200</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Goat Stew</div></div><div class="item-price">K160</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">T-Bone</div></div><div class="item-price">K250</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Chicken</div></div><div class="item-price">K90</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Fish (Fried, Foil or Grilled)</div></div><div class="item-price">K180</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Kapenta</div></div><div class="item-price">K50</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Caterpillars</div></div><div class="item-price">K50</div></div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Pork Chops.jpg" alt="Pork Chops" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Pork Chops</div></div>
+                <div class="item-price">K200</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Goat Stew.jpg" alt="Goat Stew" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Goat Stew</div></div>
+                <div class="item-price">K160</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/T-bone.jpg" alt="T-Bone" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">T-Bone</div></div>
+                <div class="item-price">K250</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken.jpg" alt="Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Chicken</div></div>
+                <div class="item-price">K90</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Fish (Fried, Foil or Grilled).jpg" alt="Fish" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Fish (Fried, Foil or Grilled)</div></div>
+                <div class="item-price">K180</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Kapenta.jpg" alt="Kapenta" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Kapenta</div></div>
+                <div class="item-price">K50</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Caterpillars.jpg" alt="Caterpillars" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Caterpillars</div></div>
+                <div class="item-price">K50</div>
+            </div>
         </div>
 
         <div class="cat-label">Extras</div>
         <div class="menu-grid">
-            <div class="menu-item"><div class="item-info"><div class="item-name">Plain Nshima</div></div><div class="item-price">K20</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Plain Chips</div></div><div class="item-price">K30</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Plain Sausage</div></div><div class="item-price">K25</div></div>
-            <div class="menu-item"><div class="item-info"><div class="item-name">Coleslaw Salads</div></div><div class="item-price">K25</div></div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Plain Nshima.jpg" alt="Plain Nshima" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Plain Nshima</div></div>
+                <div class="item-price">K20</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Plain Chips.jpg" alt="Plain Chips" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Plain Chips</div></div>
+                <div class="item-price">K30</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Plain Sausage.jpg" alt="Plain Sausage" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Plain Sausage</div></div>
+                <div class="item-price">K25</div>
+            </div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Coleslaw Salads.jpg" alt="Coleslaw Salads" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Coleslaw Salads</div></div>
+                <div class="item-price">K25</div>
+            </div>
         </div>
     </section>
 
@@ -568,18 +657,24 @@
     <section class="menu-section" id="kids">
         <div class="menu-section-title">Kids Menu</div>
         <div class="menu-section-subtitle">Little ones, big smiles</div>
-        <img src="https://images.unsplash.com/photo-1596701062351-8c2c14d1fdd0?auto=format&fit=crop&w=1200&q=80" alt="Kids Menu" class="section-image" loading="lazy" decoding="async">
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken wrap  2 chicken samosas  chips  small Coke or Fanta.jpg" alt="Kids Lunch Box" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info">
+                    <div class="item-name">Kids Lunch Box</div>
+                    <div class="item-desc">Chicken wrap · 2 chicken samosas · chips · small Coke / Fanta</div>
+                </div>
+                <div class="item-price">K80</div>
+            </div>
 
-        <div class="platter-card">
-            <div class="platter-name">Kids Lunch Box</div>
-            <div class="platter-items">Chicken wrap · 2 chicken samosas · chips · small Coke / Fanta</div>
-            <div class="platter-price">K80</div>
-        </div>
-
-        <div class="platter-card">
-            <div class="platter-name">Kids Sandwich Box</div>
-            <div class="platter-items">2 beef sliders (chicken or beef) · chicken mayo sandwich · chips · small Coke / Fanta</div>
-            <div class="platter-price">K110</div>
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/2 beef sliders (chicken or beef)  chicken mayo sandwich  chips ·small Coke  Fanta.jpg" alt="Kids Sandwich Box" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info">
+                    <div class="item-name">Kids Sandwich Box</div>
+                    <div class="item-desc">2 beef sliders (chicken or beef) · chicken mayo sandwich · chips · small Coke / Fanta</div>
+                </div>
+                <div class="item-price">K110</div>
+            </div>
         </div>
     </section>
 
@@ -590,17 +685,17 @@
 
         <div class="menu-grid">
             <div class="menu-item">
-                <img src="Assets/Butter Chicken.jpg" alt="Butter Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Butter Chicken.jpg" alt="Butter Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Butter Chicken</div></div>
                 <div class="item-price">K150</div>
             </div>
             <div class="menu-item">
-                <img src="Assets/Chicken Lollypops.jpg" alt="Chicken Lollypops" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken Lollypops.jpg" alt="Chicken Lollypops" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Chicken Lollypops</div></div>
                 <div class="item-price">K100</div>
             </div>
             <div class="menu-item">
-                <img src="Assets/Foil Fish & Nshima.jpg" alt="Foil Fish & Nshima" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Foil Fish & Nshima.jpg" alt="Foil Fish & Nshima" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Foil Fish &amp; Nshima</div></div>
                 <div class="item-price">K180</div>
             </div>
@@ -613,7 +708,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo footer-logo">
-                        <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" loading="lazy">
+                        <img decoding="async" height="256" width="256" src="Assets/logo-256.png" alt="Dreamscape Events Logo" class="logo-img" loading="lazy">
                     </a>
                     <p class="footer-desc">A place to play, chill, eat, and celebrate. Where families and friends gather to create unforgettable memories.</p>
                     <div class="social-links">
@@ -630,6 +725,7 @@
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="vital-info.html">Vital Info</a></li>
                         <li><a href="kitchen-menu.html">Kitchen Menu</a></li>
+                        <li><a href="bar-menu.html">Bar Menu</a></li>
                         <li><a href="map.html">Map</a></li>
                     </ul>
                 </div>
@@ -646,7 +742,9 @@
                 <div class="footer-contact">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><span class="material-symbols-outlined">phone</span> +260 979 542 298</li>
+                        <li><span class="material-symbols-outlined">phone</span> Info: +260 979 542 298</li>
+                        <li><span class="material-symbols-outlined">phone</span> Admin: +260 573 437 418</li>
+                        <li><span class="material-symbols-outlined">phone</span> Mobile: +260 772 338 643</li>
                         <li><span class="material-symbols-outlined">location_on</span> Plot No. L/Chibo/3169736, Lusaka</li>
                     </ul>
                 </div>

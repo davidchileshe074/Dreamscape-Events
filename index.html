@@ -16,16 +16,25 @@
     <!-- FontAwesome - load asynchronously -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+    <link rel="preload" as="image" href="Assets/one.jpg" fetchpriority="high">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="site-preloader" id="sitePreloader" role="status" aria-live="polite" aria-label="Loading Dreamscape Events">
+        <div class="preloader-shell">
+            <img decoding="async" height="256" width="256" src="Assets/logo-256.png" alt="" class="preloader-logo" aria-hidden="true">
+            <div class="preloader-progress" aria-hidden="true"></div>
+            <div class="preloader-text">Loading</div>
+        </div>
+    </div>
+
     <div class="scroll-progress-bar" id="scrollProgress"></div>
     
     <!-- Navbar -->
     <header class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" fetchpriority="high">
+                <img decoding="async" height="256" width="256" src="Assets/logo-256.png" alt="Dreamscape Events Logo" class="logo-img" fetchpriority="high">
             </a>
             
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -37,7 +46,13 @@
                 <a href="booking.html" class="nav-link">Booking</a>
                 <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="vital-info.html" class="nav-link">Vital Info</a>
-                <a href="kitchen-menu.html" class="nav-link">Kitchen Menu</a>
+                <div class="dropdown">
+                    <a href="#" class="nav-link">Menus <i class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="kitchen-menu.html">Kitchen Menu</a>
+                        <a href="bar-menu.html">Bar Menu</a>
+                    </div>
+                </div>
                 <a href="map.html" class="nav-link">Map</a>
             </nav>
         </div>
@@ -48,9 +63,9 @@
         <!-- Background Slider -->
         <div class="hero-slider">
             <div class="slide active" style="background-image: url('Assets/one.jpg');"></div>
-            <div class="slide" style="background-image: url('Assets/two.jpg');"></div>
-            <div class="slide" style="background-image: url('Assets/nine.jpg');"></div>
-            <div class="slide" style="background-image: url('Assets/ten.jpg');"></div>
+            <div class="slide" data-bg="Assets/two.jpg"></div>
+            <div class="slide" data-bg="Assets/nine.jpg"></div>
+            <div class="slide" data-bg="Assets/ten.jpg"></div>
         </div>
         <div class="hero-overlay"></div>
         <div class="container hero-content reveal">
@@ -62,10 +77,13 @@
             </div>
             <div class="hero-contact mt-3">
                     <a href="tel:+260979542298" class="hero-phone-pill">
-                        <i class="fa-solid fa-phone"></i> +260 979 542 298
+                        <i class="fa-solid fa-phone"></i> Info: +260 979 542 298
+                    </a>
+                    <a href="tel:+260573437418" class="hero-phone-pill">
+                        <i class="fa-solid fa-phone"></i> Admin: +260 573 437 418
                     </a>
                     <a href="tel:+260772338643" class="hero-phone-pill">
-                        <i class="fa-solid fa-phone"></i> +260 772 338 643
+                        <i class="fa-solid fa-phone"></i> Mobile: +260 772 338 643
                     </a>
                 </div>
         </div>
@@ -149,64 +167,7 @@
         <div class="services-diagonal-bottom"></div>
     </section>
 
-    <!-- Packages Section -->
-    <section class="packages section" id="packages">
-        <div class="container">
-            <div class="packages-header has-text-centered reveal fade-up">
-                <h2 class="section-title">Packages & <span class="highlight-text">Promotions</span></h2>
-                <p class="section-subtitle">General Entry Fee: <strong>K100</strong> (Adults & Kids). Upgrade your visit with our exclusive packages!</p>
-            </div>
-            
-            <div class="packages-grid">
-                <!-- Birthday Package -->
-                <div class="package-card reveal fade-up" style="transition-delay: 0.1s">
-                    <div class="package-header">
-                        <h3>Birthday Package</h3>
-                        <div class="package-price">K1,500</div>
-                    </div>
-                    <ul class="package-features">
-                        <li><span class="material-symbols-outlined">check_circle</span> Venue setup & decors</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> Platter & drinks for 6</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> All access swimming</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> Bouncy castle access</li>
-                    </ul>
-                    <a href="booking.html" class="btn btn-outline" style="width: 100%; margin-top: 20px;">Book Now</a>
-                </div>
-                
-                <!-- Couple Valentine's Package -->
-                <div class="package-card featured reveal fade-up" style="transition-delay: 0.2s">
-                    <div class="package-badge">Valentine's Special </div>
-                    <div class="package-header">
-                        <h3>Couple's Retreat</h3>
-                        <div class="package-price">K1,000</div>
-                    </div>
-                    <ul class="package-features">
-                        <li><span class="material-symbols-outlined">check_circle</span> Full-course meal</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> Red wine bottle</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> Swimming</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> Romantic photoshoot</li>
-                    </ul>
-                    <a href="booking.html" class="btn btn-primary" style="width: 100%; margin-top: 20px;">Reserve Spot</a>
-                </div>
-                
-                <!-- Group / Chill Pass -->
-                <div class="package-card reveal fade-up" style="transition-delay: 0.3s">
-                    <div class="package-header">
-                        <h3>Group Chill Pass</h3>
-                        <p class="package-sub">(4-6 People)</p>
-                        <div class="package-price">K850</div>
-                    </div>
-                    <ul class="package-features">
-                        <li><span class="material-symbols-outlined">check_circle</span> Dreamscape Platter</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> 2L Coke or Fanta</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> Swimming</li>
-                        <li><span class="material-symbols-outlined">check_circle</span> Group photoshoot</li>
-                    </ul>
-                    <a href="booking.html" class="btn btn-outline" style="width: 100%; margin-top: 20px;">Book Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Mini Reels Section -->
     <section class="reels section bg-light-beige reveal fade-up">
@@ -332,7 +293,7 @@
     <!-- Lightbox Container -->
     <div class="lightbox" id="lightbox">
         <span class="material-symbols-outlined lightbox-close" id="lightbox-close">close</span>
-        <img src="" alt="Fullscreen image" id="lightbox-img">
+        <img src="" alt="Fullscreen image" id="lightbox-img" decoding="async">
     </div>
 
     <!-- Testimonials Section -->
@@ -351,8 +312,8 @@
                     <p class="testimonial-author">- Chanda M.</p>
                 </div>
                 <div class="testimonial-card">
-                    <div class="stars">★★★☆☆</div>
-                    <p class="testimonial-text">"Perfect for birthdays! We booked a package here and everything was handled flawlessly."</p>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Perfect for birthdays! We had a great time and everything was handled flawlessly."</p>
                     <p class="testimonial-author">- Joy & James</p>
                 </div>
             </div>
@@ -403,8 +364,9 @@
                 <h2 style="text-align: left;">Step out and treat yourself today</h2>
                 <p style="text-align: left;">Fresh air, calm vibes, fun for kids, and relaxation for adults.</p>
                 <div class="contact-details-row mt-4" style="justify-content: flex-start;">
-                    <a href="tel:+260979542298" class="contact-pill"><span class="material-symbols-outlined">phone</span> +260 979 542 298</a>
-                    <a href="tel:+260772338643" class="contact-pill"><span class="material-symbols-outlined">phone</span> +260 772 338 643</a>
+                    <a href="tel:+260979542298" class="contact-pill"><span class="material-symbols-outlined">phone</span> Info: +260 979 542 298</a>
+                    <a href="tel:+260573437418" class="contact-pill"><span class="material-symbols-outlined">phone</span> Admin: +260 573 437 418</a>
+                    <a href="tel:+260772338643" class="contact-pill"><span class="material-symbols-outlined">phone</span> Mobile: +260 772 338 643</a>
                 </div>
                 <a href="https://wa.me/260979542298" class="btn btn-primary btn-large mt-4">Chat on WhatsApp</a>
             </div>
@@ -443,13 +405,13 @@
                         <input type="number" id="bookingGuests" name="Guests" class="form-control" value="1">
                     </div>
                     <div class="form-group">
-                        <label>Event Type / Package</label>
+                        <label>Event Type</label>
                         <select id="bookingPackage" name="Package" class="form-control" required>
                             <option value="">-- Select --</option>
-                            <option>Chill Day Pass</option>
-                            <option>Birthday Package</option>
-                            <option>Valentine's Special</option>
+                            <option>General Visit</option>
+                            <option>Birthday Celebration</option>
                             <option>School Tour</option>
+                            <option>Corporate Retreat</option>
                             <option>Other</option>
                         </select>
                     </div>
@@ -473,7 +435,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="#" class="logo footer-logo">
-                        <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" loading="lazy" decoding="async">
+                        <img height="256" width="256" src="Assets/logo-256.png" alt="Dreamscape Events Logo" class="logo-img" loading="lazy" decoding="async">
                     </a>
                     <p class="footer-desc">A place to play, chill, eat, and celebrate. Where families and friends gather to create unforgettable memories.</p>
                     <div class="social-links">
@@ -490,6 +452,7 @@
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="vital-info.html">Vital Info</a></li>
                         <li><a href="kitchen-menu.html">Kitchen Menu</a></li>
+                        <li><a href="bar-menu.html">Bar Menu</a></li>
                         <li><a href="map.html">Map</a></li>
                     </ul>
                 </div>
@@ -506,7 +469,9 @@
                 <div class="footer-contact">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><span class="material-symbols-outlined">phone</span> +260 979 542 298</li>
+                        <li><span class="material-symbols-outlined">phone</span> Info: +260 979 542 298</li>
+                        <li><span class="material-symbols-outlined">phone</span> Admin: +260 573 437 418</li>
+                        <li><span class="material-symbols-outlined">phone</span> Mobile: +260 772 338 643</li>
                         <li><span class="material-symbols-outlined">location_on</span> Plot No. L/Chibo/3169736, Lusaka</li>
                     </ul>
                 </div>

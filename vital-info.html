@@ -19,13 +19,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="site-preloader" id="sitePreloader" role="status" aria-live="polite" aria-label="Loading Dreamscape Events">
+        <div class="preloader-shell">
+            <img decoding="async" height="256" width="256" src="Assets/logo-256.png" alt="" class="preloader-logo" aria-hidden="true">
+            <div class="preloader-progress" aria-hidden="true"></div>
+            <div class="preloader-text">Loading</div>
+        </div>
+    </div>
+
     <div class="scroll-progress-bar" id="scrollProgress"></div>
     
     <!-- Navbar -->
     <header class="navbar scrolled" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" fetchpriority="high">
+                <img decoding="async" height="256" width="256" src="Assets/logo-256.png" alt="Dreamscape Events Logo" class="logo-img" fetchpriority="high">
             </a>
             
             <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -37,7 +45,13 @@
                 <a href="booking.html" class="nav-link">Booking</a>
                 <a href="gallery.html" class="nav-link">Gallery</a>
                 <a href="vital-info.html" class="nav-link active">Vital Info</a>
-                <a href="kitchen-menu.html" class="nav-link">Kitchen Menu</a>
+                <div class="dropdown">
+                    <a href="#" class="nav-link">Menus <i class="fa-solid fa-chevron-down" style="font-size: 0.8em; margin-left: 4px;"></i></a>
+                    <div class="dropdown-content">
+                        <a href="kitchen-menu.html">Kitchen Menu</a>
+                        <a href="bar-menu.html">Bar Menu</a>
+                    </div>
+                </div>
                 <a href="map.html" class="nav-link">Map</a>
             </nav>
         </div>
@@ -110,7 +124,7 @@
             <div class="footer-grid">
                 <div class="footer-brand">
                     <a href="index.html" class="logo footer-logo">
-                        <img src="Assets/logo.png" alt="Dreamscape Events Logo" class="logo-img" loading="lazy">
+                        <img decoding="async" height="256" width="256" src="Assets/logo-256.png" alt="Dreamscape Events Logo" class="logo-img" loading="lazy">
                     </a>
                     <p class="footer-desc">A place to play, chill, eat, and celebrate. Where families and friends gather to create unforgettable memories.</p>
                     <div class="social-links">
@@ -127,6 +141,7 @@
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="vital-info.html">Vital Info</a></li>
                         <li><a href="kitchen-menu.html">Kitchen Menu</a></li>
+                        <li><a href="bar-menu.html">Bar Menu</a></li>
                         <li><a href="map.html">Map</a></li>
                     </ul>
                 </div>
@@ -143,7 +158,9 @@
                 <div class="footer-contact">
                     <h3>Contact Info</h3>
                     <ul>
-                        <li><span class="material-symbols-outlined">phone</span> +260 979 542 298</li>
+                        <li><span class="material-symbols-outlined">phone</span> Info: +260 979 542 298</li>
+                        <li><span class="material-symbols-outlined">phone</span> Admin: +260 573 437 418</li>
+                        <li><span class="material-symbols-outlined">phone</span> Mobile: +260 772 338 643</li>
                         <li><span class="material-symbols-outlined">location_on</span> Plot No. L/Chibo/3169736, Lusaka</li>
                     </ul>
                 </div>
