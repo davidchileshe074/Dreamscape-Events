@@ -261,8 +261,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const FORMSUBMIT_EMAIL = 'gm.dreamescape@gmail.com'; 
     // ────────────────────────────────────────────────────────────────────────
 
-    const WHATSAPP_NUMBER = '260979542298'; 
-    const WHATSAPP_NUMBER2 = '260772338643';
+    const WHATSAPP_NUMBER = '260772338643'; 
+    const WHATSAPP_NUMBER2 = '260573437418';
 
     // Global WhatsApp function for multiple numbers
     window.openWhatsAppBoth = (message = "") => {
