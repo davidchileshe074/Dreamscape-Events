@@ -258,10 +258,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn       = document.getElementById('bookingSubmitBtn');
 
     // ─── FORMSUBMIT CONFIGURATION ──────────────────────────────────────────
-    const FORMSUBMIT_EMAIL = 'dreamscapeevents79@gmail.com'; 
+    const FORMSUBMIT_EMAIL = 'gm.dreamescape@gmail.com'; 
     // ────────────────────────────────────────────────────────────────────────
 
-    const WHATSAPP_NUMBER = '260979542298';
+    const WHATSAPP_NUMBER = '260979542298'; 
+    const WHATSAPP_NUMBER2 = '260772338643';
+
+    // Global WhatsApp function for multiple numbers
+    window.openWhatsAppBoth = (message = "") => {
+        const text = message ? `?text=${encodeURIComponent(message)}` : "";
+        
+        // Open first number
+        window.open(`https://wa.me/${WHATSAPP_NUMBER}${text}`, '_blank', 'noopener,noreferrer');
+        
+        // Open second number (small delay to help browser handle multiple popups)
+        setTimeout(() => {
+            window.open(`https://wa.me/${WHATSAPP_NUMBER2}${text}`, '_blank', 'noopener,noreferrer');
+        }, 300);
+    };
 
     if (bookingForm) {
 
@@ -348,10 +362,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 (notes ? ` *Notes:* ${notes}\n` : '') +
                 `\n_Sent from Dreamscape Events website_`;
 
-            window.open(
-                `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waMessage)}`,
-                '_blank', 'noopener,noreferrer'
-            );
+            // Open both WhatsApp numbers
+            window.openWhatsAppBoth(waMessage);
 
             // Reset button
             submitBtn.disabled = false;
@@ -386,4 +398,15 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
+    // Attach click listeners to all WhatsApp links to open both numbers
+    document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            // Get message if any (from URL or just default)
+            const url = new URL(link.href);
+            const message = url.searchParams.get('text') || "";
+            window.openWhatsAppBoth(message);
+        });
+    });
 });
