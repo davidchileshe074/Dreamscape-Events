@@ -36,7 +36,7 @@
         color: var(--white);
       }
 
-      /* ─── HERO ─── */
+      /* â”€â”€â”€ HERO â”€â”€â”€ */
       .hero-menu {
         background:
           radial-gradient(circle at 20% 18%, rgba(232,163,32,0.18) 0%, transparent 32%),
@@ -174,7 +174,7 @@
         }
       }
 
-      /* ─── NAV TABS ─── */
+      /* â”€â”€â”€ NAV TABS â”€â”€â”€ */
       .nav-wrapper {
         position: sticky;
         top: var(--nav-height, 80px);
@@ -220,7 +220,7 @@
         border-color: transparent;
       }
 
-      /* ─── SECTIONS ─── */
+      /* â”€â”€â”€ SECTIONS â”€â”€â”€ */
       .menu-section {
         display: none;
         padding: 40px 16px 60px;
@@ -257,8 +257,15 @@
         padding-bottom: 16px;
         border-bottom: 1px solid rgba(232,163,32,0.2);
       }
+      .section-note {
+        margin: 18px 0 4px;
+        color: rgba(200,230,233,0.78);
+        text-align: center;
+        font-size: 0.92rem;
+        font-style: italic;
+      }
 
-      /* ─── CATEGORY LABEL ─── */
+      /* â”€â”€â”€ CATEGORY LABEL â”€â”€â”€ */
       .cat-label {
         font-family: 'Playfair Display', serif;
         font-style: italic;
@@ -276,7 +283,7 @@
         background: linear-gradient(90deg, rgba(232,163,32,0.4), transparent);
       }
 
-      /* ─── MENU ITEM ─── */
+      /* â”€â”€â”€ MENU ITEM â”€â”€â”€ */
       .menu-grid {
         display: grid;
         grid-template-columns: 1fr;
@@ -324,7 +331,7 @@
         flex-shrink: 0;
       }
 
-      /* ─── PLATTER CARD ─── */
+      /* â”€â”€â”€ PLATTER CARD â”€â”€â”€ */
       .platter-card {
         background: linear-gradient(135deg, rgba(232,163,32,0.1) 0%, rgba(13,74,82,0.6) 100%);
         border: 1px solid rgba(232,163,32,0.35);
@@ -354,7 +361,7 @@
         color: var(--gold);
       }
 
-      /* ─── ANIMATIONS ─── */
+      /* â”€â”€â”€ ANIMATIONS â”€â”€â”€ */
       @keyframes fadeDown {
         from { opacity: 0; transform: translateY(-20px); }
         to   { opacity: 1; transform: translateY(0); }
@@ -413,7 +420,7 @@
             <div class="menu-cover-copy">
                 <div class="hero-kicker">Dreamscape Events</div>
                 <h1 class="hero-title">Kitchen <span>Menu</span></h1>
-                <p class="hero-copy">Freshly prepared plates, snacks, platters and local favourites for your visit.</p>
+                <p class="hero-copy">Freshly prepared meals, drinks, platters and local favourites for your visit.</p>
                 <div class="hero-meta" aria-label="Menu details">
                     <span>Bar &amp; Kitchen</span>
                     <span>Lusaka, Zambia</span>
@@ -426,12 +433,12 @@
     <nav class="nav-wrapper">
         <div class="nav-tabs" id="navTabs">
             <button class="nav-tab active" data-target="appetisers">Appetisers</button>
-            <button class="nav-tab" data-target="snacks">Snacks</button>
-            <button class="nav-tab" data-target="mains">Mains</button>
+            <button class="nav-tab" data-target="mains">Mains/Grills</button>
+            <button class="nav-tab" data-target="cold-drinks">Cold Drinks</button>
+            <button class="nav-tab" data-target="hot-drinks">Hot Drinks</button>
+            <button class="nav-tab" data-target="kids">Kids</button>
             <button class="nav-tab" data-target="platters">Platters</button>
             <button class="nav-tab" data-target="matebeto">Matebeto</button>
-            <button class="nav-tab" data-target="kids">Kids</button>
-            <button class="nav-tab" data-target="specials">Specials</button>
         </div>
     </nav>
 
@@ -444,44 +451,18 @@
 
         <div class="menu-grid">
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Assets/thumbs/Creamy Chicken Livers.jpg" alt="Creamy Chicken Livers" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Creamy Chicken Livers</div><div class="item-desc">Served with wedges</div></div>
-                <div class="item-price">K60</div>
-            </div>
-          
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Assets/thumbs/Spicy Gizzards.jpg" alt="Spicy Gizzards" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Spicy Gizzards</div><div class="item-desc">Served with wedges</div></div>
-                <div class="item-price">K80</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SNACKS SECTION -->
-    <section class="menu-section" id="snacks">
-        <div class="menu-section-title">Snacks</div>
-        <div class="menu-section-subtitle">Light bites &amp; finger food</div>
-        <img src="https://images.unsplash.com/photo-1566740933430-b5e70b06d2d5?auto=format&fit=crop&w=1200&q=80" alt="Snacks" class="section-image" loading="lazy" decoding="async">
-
-        <div class="menu-grid">
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/4 pieces of wings with Chips.jpg" alt="4 Wings with Chips" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">4 Wings with Chips</div></div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Pepperoni Pizza (Medium).jpeg" alt="Pepperoni Pizza" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Pepperoni Pizza</div><div class="item-desc">Medium size</div></div>
                 <div class="item-price">K100</div>
             </div>
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/4 Pieces of samosas.jpg" alt="4 Beef Samosas" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">4 Beef Samosas</div></div>
-                <div class="item-price">K60</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Spring Rolls.jpeg" alt="Spring Rolls" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Spring Rolls</div></div>
+                <div class="item-price">K100</div>
             </div>
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/4 Pieces of chicken Samosas.jpg" alt="4 Chicken Samosas" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">4 Chicken Samosas</div></div>
-                <div class="item-price">K60</div>
-            </div>
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/5 Pieces Dumplings.jpg" alt="5 Dumplings" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">5 Dumplings</div></div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Chicken Burger.jpeg" alt="Chicken Burger" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Chicken Burger</div></div>
                 <div class="item-price">K100</div>
             </div>
         </div>
@@ -489,36 +470,21 @@
 
     <!-- MAINS SECTION -->
     <section class="menu-section" id="mains">
-        <div class="menu-section-title">Mains &amp; Grills</div>
+        <div class="menu-section-title">Mains/Grills</div>
         <div class="menu-section-subtitle">All served with chips &amp; salads</div>
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="Mains &amp; Grills" class="section-image" loading="lazy" decoding="async">
+        <img src="Menu/T-bone.jpg" alt="Mains and grills" class="section-image" loading="lazy" decoding="async">
 
-        <div class="cat-label">Sandwiches &amp; Wraps</div>
         <div class="menu-grid">
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken Wrap With Chips and salads.jpg" alt="Chicken Wrap" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Chicken Wrap</div><div class="item-desc">With chips &amp; salads</div></div>
-                <div class="item-price">K80</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/T-bone with Chips and salads.jpg" alt="T-Bone Steak" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">T-Bone Steak</div><div class="item-desc">With chips &amp; salads</div></div>
+                <div class="item-price">K250</div>
             </div>
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Beef Wrap With Chips and salads.jpg" alt="Beef Wrap" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Beef Wrap</div><div class="item-desc">With chips &amp; salads</div></div>
-                <div class="item-price">K80</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Bream Fish.jpeg" alt="Bream Fish" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Bream Fish</div><div class="item-desc">Fried · Foil · Grilled · Sauces: BBQ · Lemon &amp; Herb · PeriPeri</div></div>
+                <div class="item-price">K150</div>
             </div>
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Beef Burger With Chips and salads.jpg" alt="Beef Burger" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Beef Burger</div><div class="item-desc">With chips &amp; salads</div></div>
-                <div class="item-price">K80</div>
-            </div>
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken Burger With chips and salads.jpg" alt="Chicken Burger" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Chicken Burger</div><div class="item-desc">With chips &amp; salads</div></div>
-                <div class="item-price">K80</div>
-            </div>
-        </div>
-
-        <div class="cat-label">Grills</div>
-        <div class="menu-grid">
             <div class="menu-item">
                 <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Quarter Chicken With chips and salads.jpg" alt="Quarter Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Quarter Chicken</div><div class="item-desc">With chips &amp; salads</div></div>
@@ -534,52 +500,97 @@
                 <div class="item-info"><div class="item-name">Full Chicken</div><div class="item-desc">With chips &amp; salads</div></div>
                 <div class="item-price">K300</div>
             </div>
+        </div>
+        <div class="section-note">Sauces: BBQ Sauce · Lemon &amp; Herb · PeriPeri</div>
+    </section>
+
+    <!-- COLD DRINKS SECTION -->
+    <section class="menu-section" id="cold-drinks">
+        <div class="menu-section-title">Cold Drinks</div>
+        <div class="menu-section-subtitle">Chilled favourites</div>
+        <img src="Menu/Chocolate Milkshake.jpeg" alt="Cold drinks" class="section-image" loading="lazy" decoding="async">
+
+        <div class="menu-grid">
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Grilled Beef Filled With Chips and salads.jpg" alt="Grilled Beef Fillet" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Grilled Beef Fillet</div><div class="item-desc">With chips &amp; salads</div></div>
-                <div class="item-price">K150</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Chocolate Milkshake.jpeg" alt="Chocolate Milkshake" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Chocolate Milkshake</div></div>
+                <div class="item-price">K35</div>
             </div>
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/T-bone with Chips and salads.jpg" alt="T-Bone Steak" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">T-Bone Steak</div><div class="item-desc">With chips &amp; salads</div></div>
-                <div class="item-price">K250</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Strawberry Milkshake.jpeg" alt="Strawberry Milkshake" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Strawberry Milkshake</div></div>
+                <div class="item-price">K35</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOT DRINKS SECTION -->
+    <section class="menu-section" id="hot-drinks">
+        <div class="menu-section-title">Hot Drinks</div>
+        <div class="menu-section-subtitle">Warm sips</div>
+        <img src="Menu/Hot Chocolate.jpeg" alt="Hot drinks" class="section-image" loading="lazy" decoding="async">
+
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Hot Chocolate.jpeg" alt="Hot Chocolate" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Hot Chocolate</div></div>
+                <div class="item-price">K25</div>
             </div>
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Spare Ribs with Chips and salads.jpg" alt="Spare Ribs" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Spare Ribs</div><div class="item-desc">With chips &amp; salads</div></div>
-                <div class="item-price">K250</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Tea.jpeg" alt="Tea" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Tea</div></div>
+                <div class="item-price">K20</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KIDS SECTION -->
+    <section class="menu-section" id="kids">
+        <div class="menu-section-title">Kids Menu</div>
+        <div class="menu-section-subtitle">Little ones, big smiles</div>
+        <img src="Menu/10 Pieces Chicken Nuggets, Coleslaw Salad, Crackers, Chips & Small Fanta.jpeg" alt="Kids menu" class="section-image" loading="lazy" decoding="async">
+        <div class="menu-grid">
+            <div class="menu-item">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/10 Pieces Chicken Nuggets, Coleslaw Salad, Crackers, Chips & Small Fanta.jpeg" alt="Chicken Nuggets" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info">
+                    <div class="item-name">Chicken Nuggets</div>
+                    <div class="item-desc">10 pieces chicken nuggets · coleslaw salads · crackers · chips · small Fanta</div>
+                </div>
+                <div class="item-price">K80</div>
             </div>
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/2 pork chops with Chips and salads (2).jpg" alt="2 Pork Chops" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">2 Pork Chops</div><div class="item-desc">With chips &amp; salads</div></div>
-                <div class="item-price">K200</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/Chicken Tenders, 2 Chicken Dumplings, Chips, Coleslaw Salad & Small Fanta.jpeg" alt="Chicken Tenders" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info">
+                    <div class="item-name">Chicken Tenders</div>
+                    <div class="item-desc">Chicken tenders · 2 chicken dumplings · chips · coleslaw salads · small Fanta</div>
+                </div>
+                <div class="item-price">K100</div>
             </div>
         </div>
     </section>
 
     <!-- PLATTERS SECTION -->
     <section class="menu-section" id="platters">
-        <div class="menu-section-title">Platter &amp; Family Meals</div>
+        <div class="menu-section-title">Platter/Family Meals</div>
         <div class="menu-section-subtitle">Share the experience</div>
-        <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80" alt="Platters" class="section-image" loading="lazy" decoding="async">
+        <img src="Menu/3 wings · chicken strips · 3 samosas · chicken wrap · ¼ chicken · chips · coleslaw salads.jpg" alt="Platters" class="section-image" loading="lazy" decoding="async">
 
         <div class="menu-grid">
             <div class="menu-item">
                 <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/3 wings · chicken strips · 3 samosas · chicken wrap · ¼ chicken · chips · coleslaw salads.jpg" alt="Chicken Platter" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info">
                     <div class="item-name">Chicken Platter</div>
-                    <div class="item-desc">3 wings · chicken strips · 3 samosas · chicken wrap · ¼ chicken · chips · coleslaw salads</div>
+                    <div class="item-desc">4 wings · chicken strips · 4 samosas · chicken wrap · ¼ chicken · chips · coleslaw salads · chicken kebab</div>
                 </div>
-                <div class="item-price">K300</div>
+                <div class="item-price">K350</div>
             </div>
-
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/2 pork chops · 300g spare ribs · ½ chicken · T-bone · 4 meat spring rolls · 3 wings · chips · coleslaw salads.jpg" alt="Dreamscape Platter" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/4 pieces of wings with Chips.jpg" alt="Shawarma Platter" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info">
-                    <div class="item-name">Dreamscape Platter</div>
-                    <div class="item-desc">2 pork chops · 300g spare ribs · ½ chicken · T-bone · 4 meat spring rolls · 3 wings · chips · coleslaw salads</div>
+                    <div class="item-name">Shawarma Platter</div>
+                    <div class="item-desc">4 chicken shawarma · 2 mini pepperoni pizza · full portion of crispy chips · green salads</div>
                 </div>
-                <div class="item-price">K620</div>
+                <div class="item-price">K400</div>
             </div>
         </div>
     </section>
@@ -592,14 +603,14 @@
 
         <div class="menu-grid">
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Pork Chops.jpg" alt="Pork Chops" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Pork Chops</div></div>
-                <div class="item-price">K200</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Plain Nshima.jpg" alt="Beans" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Beans</div></div>
+                <div class="item-price">K45</div>
             </div>
             <div class="menu-item">
                 <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Goat Stew.jpg" alt="Goat Stew" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Goat Stew</div></div>
-                <div class="item-price">K160</div>
+                <div class="item-price">K90</div>
             </div>
             <div class="menu-item">
                 <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/T-bone.jpg" alt="T-Bone" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
@@ -607,26 +618,28 @@
                 <div class="item-price">K250</div>
             </div>
             <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken.jpg" alt="Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Chicken</div></div>
-                <div class="item-price">K90</div>
+                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken.jpg" alt="Chicken Sets" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
+                <div class="item-info"><div class="item-name">Chicken Sets</div></div>
+                <div class="item-price">K60</div>
             </div>
             <div class="menu-item">
                 <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Fish (Fried, Foil or Grilled).jpg" alt="Fish" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Fish (Fried, Foil or Grilled)</div></div>
-                <div class="item-price">K180</div>
+                <div class="item-price">K150</div>
             </div>
             <div class="menu-item">
                 <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Kapenta.jpg" alt="Kapenta" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Kapenta</div></div>
-                <div class="item-price">K50</div>
+                <div class="item-price">K45</div>
             </div>
             <div class="menu-item">
                 <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Caterpillars.jpg" alt="Caterpillars" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Caterpillars</div></div>
-                <div class="item-price">K50</div>
+                <div class="item-price">K45</div>
             </div>
         </div>
+
+        <div class="section-note">Comes with 2 types of vegetable</div>
 
         <div class="cat-label">Extras</div>
         <div class="menu-grid">
@@ -649,55 +662,6 @@
                 <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Coleslaw Salads.jpg" alt="Coleslaw Salads" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
                 <div class="item-info"><div class="item-name">Coleslaw Salads</div></div>
                 <div class="item-price">K25</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- KIDS SECTION -->
-    <section class="menu-section" id="kids">
-        <div class="menu-section-title">Kids Menu</div>
-        <div class="menu-section-subtitle">Little ones, big smiles</div>
-        <div class="menu-grid">
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken wrap  2 chicken samosas  chips  small Coke or Fanta.jpg" alt="Kids Lunch Box" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info">
-                    <div class="item-name">Kids Lunch Box</div>
-                    <div class="item-desc">Chicken wrap · 2 chicken samosas · chips · small Coke / Fanta</div>
-                </div>
-                <div class="item-price">K80</div>
-            </div>
-
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/2 beef sliders (chicken or beef)  chicken mayo sandwich  chips ·small Coke  Fanta.jpg" alt="Kids Sandwich Box" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info">
-                    <div class="item-name">Kids Sandwich Box</div>
-                    <div class="item-desc">2 beef sliders (chicken or beef) · chicken mayo sandwich · chips · small Coke / Fanta</div>
-                </div>
-                <div class="item-price">K110</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- SPECIALS SECTION -->
-    <section class="menu-section" id="specials">
-        <div class="menu-section-title">Wednesday Special</div>
-        <div class="menu-section-subtitle">Available every Wednesday</div>
-
-        <div class="menu-grid">
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Butter Chicken.jpg" alt="Butter Chicken" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Butter Chicken</div></div>
-                <div class="item-price">K150</div>
-            </div>
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Chicken Lollypops.jpg" alt="Chicken Lollypops" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Chicken Lollypops</div></div>
-                <div class="item-price">K100</div>
-            </div>
-            <div class="menu-item">
-                <img height="80" width="80" decoding="async" loading="lazy" src="Menu/thumbs/Foil Fish & Nshima.jpg" alt="Foil Fish & Nshima" style="width: 80px; height: 80px; border-radius: 8px; object-fit: cover; flex-shrink: 0;">
-                <div class="item-info"><div class="item-name">Foil Fish &amp; Nshima</div></div>
-                <div class="item-price">K180</div>
             </div>
         </div>
     </section>
@@ -806,3 +770,4 @@
     </script>
 </body>
 </html>
+
